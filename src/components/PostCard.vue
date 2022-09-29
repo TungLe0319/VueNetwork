@@ -2,12 +2,7 @@
   <div class="post-card">
  <div class="card   elevation-3 mx-4 my-2 "  >
   <div class="d-flex">
-    <img :src="account.picture" alt="" class="accountPicture elevation-4 ms-2 mt-2 rounded-circle">
-    <div class=" d-flex align-items-center ms-3 mt-4 flex-column">
-      <h6>{{account.name}}</h6>
-      <span> <p></p> <i class="mdi mdi-school fs-2"></i>   </span>
-    </div>
-    
+   <PostCreator  :creator="post.creator" />
   </div>
   <div>
     
@@ -18,7 +13,7 @@
             </div>
             <div class="card-body ">
               <div class="">
-                <h5>{{post.body}}</h5>
+                <p>{{post.body}}</p>
               </div>
             
             </div>
@@ -29,20 +24,17 @@
 
 <script>
 import { Post } from "../models/Post.js";
-import {Account} from "../models/Account.js"
+import PostCreator from "./PostCreator.vue";
+
 
 export default {
-  props: {
-post:{type: Post, required: true},
-account:{type: Account, required:true}
-  },
-
-  setup(props) {
-const account = props.account.creator
-    return {
-account
-    };
-  },
+    props: {
+        post: { type: Post, required: true },
+    },
+    setup(props) {
+        return {};
+    },
+    components: { PostCreator }
 };
 </script>
 

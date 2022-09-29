@@ -3,7 +3,7 @@
  <div class="container-fluid">
   <div class="row  ">
 <div class="col-md-7" v-for="p in posts" :key="p"  >
- <PostCard  :post="p" :account="p" />
+ <PostCard  :post="p"  />
 
 </div>
 

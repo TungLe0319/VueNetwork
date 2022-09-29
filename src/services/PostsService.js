@@ -12,7 +12,7 @@ class PostsService{
     })
 console.log(res.data.posts);
 AppState.posts = res.data.posts.map(p => new Post(p))
-console.log(AppState.posts);
+
   }
 }
 export const postService = new PostsService()
