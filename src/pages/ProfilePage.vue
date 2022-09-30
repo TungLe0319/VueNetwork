@@ -1,6 +1,9 @@
 <template>
   <div class="example" v-if="profile">
-  <ProfileDetail />
+  <ProfileDetail :profile="profile" />
+  </div>
+  <div>
+    <!-- <PostCard v-for="p in posts" :post="p"  /> -->
   </div>
 </template>
 
@@ -11,6 +14,7 @@ import { useRoute } from "vue-router";
 import { AppState } from "../AppState.js";
 import {profilesService} from  '../services/ProfilesService.js';
 import ProfileDetail from "../components/ProfileDetail.vue";
+import PostCard from "../components/PostCard.vue";
 export default {
     setup(props) {
         const route = useRoute();
@@ -34,10 +38,11 @@ export default {
             // getProjectsByCreatorId
         });
         return {
-            profile: computed(() => AppState.activeProfile)
+            profile: computed(() => AppState.activeProfile),
+            posts: computed(()=>AppState.posts)
         };
     },
-    components: { ProfileDetail }
+    components: { ProfileDetail, PostCard }
 };
 </script>
 

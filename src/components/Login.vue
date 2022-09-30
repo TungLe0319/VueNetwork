@@ -15,15 +15,18 @@
         aria-expanded="false"
         id="authDropdown"
       >
-        <div v-if="account.picture || user.picture">
+        <div v-if="account.picture || user.picture" class="d-flex justify-content-center mt-5">
           <img
             :src="account.picture || user.picture"
             alt="account photo"
-            height="40"
-            class="rounded"
+            height="120"
+            class="rounded-circle"
           />
-          <!-- <span class="mx-3 text-success lighten-30">{{ account.name || user.name }}</span> -->
+        
         </div>
+        <!-- <div>
+            <span class=" text-success lighten-30">{{ account.name || user.name }}</span>
+        </div> -->
       </div>
       <div class="dropdown-menu p-0 list-group w-100" aria-labelledby="authDropdown">
         <router-link :to="{ name: 'Account' }">
@@ -37,9 +40,50 @@
         </div>
       </div>
     </div>
+<!-- --------------------------------- -->
+
+<div class="mt-2 d-flex flex-column ">
+  <div>
+    <span>
+      <small>summer 2018</small>
+    </span>
+    <span>
+      <h6>CocoBeans</h6>
+    </span>
+  </div>
+<div class="d-flex align-items-center">
+
+  <i class="mdi mdi-github fs-3 me-2"></i> cocobeans999
+</div>
+<div class="d-flex align-items-center">
+
+  <i class="mdi mdi-linkedin fs-3 me-2"></i> cocobeans999
+</div>
+<div class="d-flex align-items-center">
+
+  <i class="mdi mdi-github fs-3 me-2"></i> cocobeans999
+</div>
+
+
+</div>
+
   </span>
 </template>
 
+<!-- 
+  this.id = data.id
+    this.email = data.email
+    this.name = data.name
+    this.picture = data.picture
+  
+    this.bio=data.bio
+    this.coverImg=data.coverImg
+    this.github=data.github
+    this.linkedin=data.linkedin
+    this.resume=data.resume
+    this.class=data.class
+    this.graduated=data.graduated
+    this.subs=data.subs //array -->
 <script>
 import { computed } from 'vue'
 import { AppState } from '../AppState'

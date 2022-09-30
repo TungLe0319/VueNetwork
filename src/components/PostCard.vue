@@ -7,14 +7,15 @@
   <div>
     
   </div>
-           
-              <img :src="post.imgUrl" alt=""
-                class="img-fluid  mt-2 elevation-2 forcedImg ">
-               <div class="card-body ">
-              <div class="">
-                <p>{{post.body}}</p>
+              <div class=" px-2">
+                <h6>{{post.body}}</h6>
               </div>
             
+              <img :src="post.imgUrl" alt=""
+                class="img-fluid  mt-2 elevation-2 forcedImg ">
+               <div class="card-footer bg-secondary d-flex justify-content-end align-items-center">
+        <h6> {{post.likeIds.length}}  </h6> 
+      <vs-button class="rounded" color="warning" type="filled" ><i class="mdi mdi-star fs-5 "></i></vs-button>
             </div>
           </div>
     
@@ -64,13 +65,7 @@ export default {
 transform: scale(1.01);
 transition: all 0.3s ease-out;
 
-img  {
 
- overflow: hidden;
- transition: all 1s  ease;
- border-radius: 4px;
-
-}
 }
 
 </style>

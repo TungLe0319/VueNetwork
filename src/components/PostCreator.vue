@@ -12,7 +12,7 @@
    
     <div class=" d-flex align-items-center  mt-4 ">
       <h6> {{creator.name}}</h6>
-      <span> <p></p> <i class="mdi mdi-school fs-2"></i>   </span>
+      <span v-if="creator.graduated">  <i class="mdi mdi-school fs-2"></i>   </span>
     </div>
     
  
@@ -48,9 +48,9 @@ creator:{type: Account, required:true}
   /* Second Color  in text-shadow is the blur */
 }
 .forcedImg{
-  height: 100px;
-  width: 100px;
-  object-fit: contain;
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
 }
 
 

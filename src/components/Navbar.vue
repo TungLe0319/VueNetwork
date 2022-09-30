@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+  <nav class="navbar navbar-expand-lg bg-warning menu-bar px-3">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex flex-column align-items-center">
-        <!-- <img alt="logo" src="../assets/img/cw-logo.png" height="45" /> -->
+        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
       </div>
     </router-link>
     <button
@@ -19,13 +19,12 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
-            About
-          </router-link>
+       
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
-      <Login />
+      <!-- <Login />
+      //TODO search bar here -->
     </div>
   </nav>
 </template>
@@ -53,5 +52,22 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+
+.menu-bar{
+  /* background-image:  linear-gradient(-90deg, #d38312, #a83279); */
+ 
+    background: linear-gradient(40deg, #45cafc, #303f9f) !important;
+
+}
+
+.text-shadow{
+  color: aliceblue;
+  text-shadow: 1px 1px black, 0px 0px 5px salmon;
+  font-weight: bold;
+  letter-spacing: 0.08rem
+  
+  /* Second Color  in text-shadow is the blur */
 }
 </style>

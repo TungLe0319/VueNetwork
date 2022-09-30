@@ -1,26 +1,18 @@
 <template>
   <div class="container-fluid">
-    <div class="row scrollMe">
+    <div class="row scrollMe justify-content-center">
       <div class="col-md-12 d-flex justify-content-center">
         <div class="d-flex justify-content-center mt-2">
-          <button
-            @click="changePage(previousPage)"
-           
-            class="btn btn-danger me-2"
-          
-          >
-            Previous
-          </button>
-          <button
-            @click="changePage(nextPage)"
-           
-            :class="`btn btn-danger ${!nextPage ? 'btn-info' : ''}`"
-          >
-            Next
-          </button>
+        
+          <vs-button class="me-2" @click="changePage(previousPage)" type="gradient">Previous</vs-button>
+         
+          <vs-button  @click="changePage(nextPage)" color="warning" type="gradient">warning</vs-button>
         </div>
       </div>
-      <div class="col-md-7" v-for="p in posts" :key="p">
+      <div class="col-md-8">
+        <CreatePost />
+      </div>
+      <div class="col-md-8" v-for="p in posts" :key="p">
         <PostCard :post="p" />
       </div>
     </div>
@@ -34,6 +26,7 @@ import { AppState } from '../AppState.js';
 import { postService } from '../services/PostsService.js';
 import Pop from '../utils/Pop.js';
 import PostCard from '../components/PostCard.vue';
+import CreatePost from "../components/CreatePost.vue";
 
 export default {
   setup() {
@@ -51,6 +44,7 @@ export default {
       nextPage: computed(() => AppState.nextPage),
       previousPage: computed(() => AppState.previousPage),
       posts: computed(() => AppState.posts),
+    //   account:computed(()=>AppState.account),
 
       async changePage(pageUrl) {
         try {
@@ -61,7 +55,7 @@ export default {
       },
     };
   },
-  components: { PostCard },
+  components: { PostCard, CreatePost },
 };
 </script>
 

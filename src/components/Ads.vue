@@ -2,7 +2,7 @@
 
   <div class="ads-cards">
      <vs-tooltip color="warning" :text="ad.title" position="right">
-   <img :src="ad.square" alt="" class="forcedImg">
+   <img :src="ad.tall" alt="" class="forcedImg elevation-4">
     </vs-tooltip>
    
 
@@ -36,9 +36,9 @@ ad:{type: Ad, required:true}
   /* Second Color  in text-shadow is the blur */
 }
 .forcedImg{
-  height: 100px;
-  width: 100px;
-  object-fit: cover;
+ 
+  width: auto;
+  object-fit: contain;
 }
 
 
