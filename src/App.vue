@@ -3,7 +3,7 @@
     <Navbar />
   </header>
   <main class="container-fluid">
-    <div class="row">
+    <div class="row ">
       <div class="col-md-2 bg-dark text-light sideNav rounded-end elevation-2 border border-secondary border-1 profile-Banner" >
         <div class="mt-3">
           <Login />
@@ -22,6 +22,12 @@
           </button>
         </div>
       </div>
+      <!---------------------------------->
+      <!-- <div class="col-md-2 m-0 ">
+
+        <SideBar/>
+      </div> -->
+      <!---------------------------------->
 
       <div class="col-md-8 main-content">
         <router-view />
@@ -44,6 +50,7 @@ import Navbar from './components/Navbar.vue';
 import Ads from './components/Ads.vue';
 import Pop from './utils/Pop.js';
 import { adsService } from './services/AdsService.js';
+import SideBar from "./components/SideBar.vue";
 
 export default {
   setup() {
@@ -63,7 +70,7 @@ export default {
       ads: computed(() => AppState.ads),
     };
   },
-  components: { Navbar, Ads },
+  components: { Navbar, Ads, SideBar },
 };
 </script>
 <style lang="scss">

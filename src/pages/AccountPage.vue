@@ -2,52 +2,27 @@
   <div class="about text-center">
     <h1>Welcome {{ account.name }}</h1>
     <img class="rounded" :src="account.picture" alt="" />
-    <p>{{ account.email }}</p>
+    <p>{{ account.name }}</p>
   </div>
 
-  <div class="col-md-8 ">
-   
+  <div class="col-md-8">
+    <AccountForm/>
   </div>
 </template>
 
-
- <!-- this.id = data.id
-    this.email = data.email
-    this.name = data.name
-    this.picture = data.picture
-
-    this.bio=data.bio
-    this.coverImg=data.coverImg
-    this.github=data.github
-    this.linkedin=data.linkedin
-    this.resume=data.resume
-    this.class=data.class
-    this.graduated=data.graduated
-    this.subs=data.subs //array -->
 <script>
-import { computed } from 'vue'
-import { AppState } from '../AppState'
-import { accountService } from "../services/AccountService.js"
-import Pop from "../utils/Pop.js"
+import { computed} from 'vue';
+import { AppState } from '../AppState';
+import AccountForm from '../components/AccountForm.vue';
+
 export default {
-  setup() {
-
-
-    return {
-
-      
-      account: computed(() => AppState.account),
-
-      async editProfile(){
-try {
-    await accountService.editProfile()
-  } catch (error) {
-    Pop.error(error,[''])
-  }
-      }
-    }
-  }
-}
+    setup() {
+        return {
+            account: computed(() => AppState.account),
+        };
+    },
+    components: { AccountForm }
+};
 </script>
 
 <style scoped>
