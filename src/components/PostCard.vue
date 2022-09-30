@@ -24,9 +24,9 @@
         <div class="position-absolute top-0 end-0">
           <button @click.stop="$emit('deletePost')" class="btn"><i class="mdi mdi-minus-box fs-4"></i></button>
         </div>
-        <div class="d-flex">
+        <div class="d-flex ">
           <h6>{{ post.likeIds.length }}</h6>
-          <i class="mdi mdi-star fs-5"></i>
+          <i @click="likePost()" class="mdi mdi-star fs-2 selectable"></i>
         </div>
       </div>
     </div>
@@ -48,7 +48,13 @@ export default {
   setup(props) {
     return {
 
-    
+    async likePost(){
+      try {
+          await postService.likePost(props.post.id)
+        } catch (error) {
+          Pop.error(error,'[likePost]')
+        }
+    },
 
        deletePost() {
         emit('deletePost');

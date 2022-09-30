@@ -1,12 +1,17 @@
 <template>
   
     <div class="card elevation-3 mx-4 my-2">
-      <div class="d-flex align-items-center ms-4">
-        <div class="me-2">
+      <div class="d-flex   justify-content-around ms-4">
+        <div class="me-2 mt-4" v-if="acc.picture" >
           <img :src="acc.picture" alt="" class="forcedImg rounded-circle" />
         </div>
+        <div v-else>
+<div class="spinner-border text-primary p-4" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+        </div>
 
-        <div>
+        <div class="postComment">
           <form @submit="handleSubmit">
             <div class="form-group mb-2">
               <label for="bio"></label>
@@ -18,19 +23,24 @@
                 required
               ></textarea>
             </div>
- <div class="form-floating">
- <input type="url" for="imgUrl" v-model="editable.imgUrl">
-  
-</div>
-          
-            <div class="d-flex justify-content-between mb-2">
-              <div>
-
-                <vs-tooltip color="warning" text="Image/Video" position="right">
+ <div class="form-group d-flex">
+          <vs-tooltip color="warning" text="Image/Video" position="right">
                 <i class="mdi mdi-image fs-2 text-primary "></i>
                 </vs-tooltip>
 
-              </div>
+        <input
+          type="url"
+          v-model="editable.imgUrl"
+          placeholder="Image url..."
+          
+          class="form-control"
+          min="0"
+        />
+      </div>
+
+          
+            <div class="d-flex justify-content-end mb-2">
+             
              
 
               <div class="d-flex justify-content-end">
@@ -93,5 +103,9 @@ const editable = ref({})
   height: 100px;
   width: 100px;
   object-fit: cover;
+}
+
+.postComment{
+  width: 450px;
 }
 </style>

@@ -9,7 +9,7 @@
           <Login />
         </div>
 
-        <div class="mt-2">
+        <!-- <div class="mt-2">
           <button
             class="btn mt-3 text-success lighten-30 selectable text-uppercase"
           >
@@ -20,7 +20,7 @@
               Home
             </router-link>
           </button>
-        </div>
+        </div> -->
       </div>
       <!---------------------------------->
       <!-- <div class="col-md-2 m-0 ">

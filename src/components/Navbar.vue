@@ -1,8 +1,9 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-warning menu-bar px-3 elevation-4">
+  <nav class="navbar navbar-expand-lg bg-warning menu-bar px-3 elevation-4 ">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/cw-logo.png" height="45" />
+      <div class="d-flex align-items-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/2115/2115955.png" alt="" width="50" height="50">
+     Vueluptuous
       </div>
     </router-link>
     <button
@@ -16,6 +17,9 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+    <div>
+      
+    </div>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>

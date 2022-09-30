@@ -54,7 +54,7 @@
           placeholder="Image url..."
           
           class="form-control"
-          min="0"
+       
         />
       </div>
 
