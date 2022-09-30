@@ -1,5 +1,5 @@
 <template>
-  <div class="post-card">
+  
     <div class="card elevation-3 mx-4 my-2">
       <div class="d-flex align-items-center ms-4">
         <div class="me-2">
@@ -18,7 +18,11 @@
                 required
               ></textarea>
             </div>
-
+ <div class="form-floating">
+ <input type="url" for="imgUrl" v-model="editable.imgUrl">
+  
+</div>
+          
             <div class="d-flex justify-content-between mb-2">
               <div>
 
@@ -37,16 +41,12 @@
                 </vs-tooltip>
               </div>
             </div>
-            <div class="form-floating mb-3">
- <input type="url" for="imgUrl" v-model="editable.imgUrl">
-  
-</div>
-           
+            
           </form>
         </div>
       </div>
     </div>
-  </div>
+
 </template>
 
 <script>

@@ -1,26 +1,33 @@
 <template>
-  <div class="post-card">
+  <div class="post-card position-relative">
     <div class="card elevation-3 mx-4 my-2">
       <div class="d-flex">
         <PostCreator :creator="post.creator" />
       </div>
-     
+      
+<!-- POST DOWN BELOW -->
       <div class="p-2">
         <h6>{{ post.body }}</h6>
       </div>
 
       <img
-        :src="post.imgUrl"
+        v-if="post.imgUrl"
+        :src="post?.imgUrl"
         alt=""
         class="img-fluid mt-2 elevation-2 forcedImg"
       />
+
       <div
-        class="card-footer bg-secondary d-flex justify-content-end align-items-center"
+        class="card-footer bg-secondary d-flex justify-content-between align-items-center"
       >
-        <h6>{{ post.likeIds.length }}</h6>
-        <vs-button class="rounded" color="warning" type="filled"
-          ><i class="mdi mdi-star fs-5"></i
-        ></vs-button>
+      <!-- Delete Post Button -->
+        <div class="position-absolute top-0 end-0">
+          <button class="btn"><i class="mdi mdi-minus-box fs-4"></i></button>
+        </div>
+        <div class="d-flex">
+          <h6>{{ post.likeIds.length }}</h6>
+          <i class="mdi mdi-star fs-5"></i>
+        </div>
       </div>
     </div>
   </div>
