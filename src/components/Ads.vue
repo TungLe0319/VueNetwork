@@ -2,7 +2,7 @@
 
   <div class="ads-cards">
      <vs-tooltip color="warning" :text="ad.title" position="right">
-   <img :src="ad.tall" alt="" class="forcedImg elevation-4">
+   <img :src="ad.tall" alt="" class="img-fluid elevation-4 mt-2 rounded" >
     </vs-tooltip>
    
 
