@@ -1,7 +1,7 @@
 <template>
 
   <div class="ads-cards">
-     <vs-tooltip color="warning" :text="ad.title" position="right">
+     <vs-tooltip color="primary" :text="ad.title" position="left">
    <img :src="ad.tall" alt="" class="img-fluid elevation-4 mt-2 rounded" >
     </vs-tooltip>
    
