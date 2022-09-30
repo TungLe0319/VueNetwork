@@ -4,7 +4,7 @@
       <div class="d-flex">
         <PostCreator :creator="post.creator" />
       </div>
-      
+
 <!-- POST DOWN BELOW -->
       <div class="p-2">
         <h6>{{ post.body }}</h6>
@@ -22,7 +22,7 @@
       >
       <!-- Delete Post Button -->
         <div class="position-absolute top-0 end-0">
-          <button class="btn"><i class="mdi mdi-minus-box fs-4"></i></button>
+          <button @click.stop="$emit('deletePost')" class="btn"><i class="mdi mdi-minus-box fs-4"></i></button>
         </div>
         <div class="d-flex">
           <h6>{{ post.likeIds.length }}</h6>
@@ -34,15 +34,26 @@
 </template>
 
 <script>
+import { Account } from "../models/Account.js";
 import { Post } from '../models/Post.js';
+import { postService } from "../services/PostsService.js";
+import Pop from "../utils/Pop.js";
 import PostCreator from './PostCreator.vue';
 
 export default {
   props: {
     post: { type: Post, required: true },
+  
   },
   setup(props) {
-    return {};
+    return {
+
+    
+
+       deletePost() {
+        emit('deletePost');
+      },
+    };
   },
   components: { PostCreator },
 };

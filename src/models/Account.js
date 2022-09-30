@@ -6,7 +6,9 @@ export class Account {
     this.picture = data.picture
     // TODO add additional properties if needed
     this.bio=data.bio
-    this.coverImg=data.coverImg
+    this.coverImg =
+      data.coverImg ||
+      'https://wallpapertops.com/walldb/original/e/f/7/7182.jpg';
     this.github=data.github
     this.linkedin=data.linkedin
     this.resume=data.resume
