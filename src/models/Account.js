@@ -3,7 +3,9 @@ export class Account {
     this.id = data.id
     this.email = data.email
     this.name = data.name
-    this.picture = data.picture
+    this.picture =
+      data.picture ||
+      'https://media.istockphoto.com/vectors/default-placeholder-woman-vector-id844000348?k=6&m=844000348&s=612x612&w=0&h=2QiYy7vaGEt7MlzlMnLPhUSbRNw2FzwoLc6lTXh-3vA=';
     // TODO add additional properties if needed
     this.bio=data.bio
     this.coverImg =

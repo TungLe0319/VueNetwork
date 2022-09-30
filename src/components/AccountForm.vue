@@ -58,17 +58,7 @@
         />
       </div>
 
-      <div class="form-group">
-        <label for="class">coverImage</label>
-        <input
-          type="url"
-          v-model="editable.coverImg"
-          placeholder="class.."
-          
-          class="form-control"
-          min="0"
-        />
-      </div>
+      
 
 
 
@@ -111,7 +101,7 @@
         <label for="bio">Bio:</label>
         <textarea
           v-model="editable.bio"
-          placeholder="url..."
+          placeholder="bio."
           class="form-control"
           rows="4"
         ></textarea>
