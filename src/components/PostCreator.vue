@@ -3,7 +3,7 @@
 
     <div class="mx-2">
 <router-link :to="{name: 'Profile', params:{ id:  creator.id}}"> 
-  <img  :src="creator.picture"  class="accountPicture elevation-4  mt-2 rounded-circle forcedImg" >
+  <img  :src="creator?.picture"  class="accountPicture elevation-4  mt-2 rounded-circle forcedImg" >
 
 </router-link>
 

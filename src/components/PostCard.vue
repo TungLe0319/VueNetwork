@@ -7,11 +7,10 @@
   <div>
     
   </div>
-            <div class="d-flex justify-content-center">
+           
               <img :src="post.imgUrl" alt=""
-                class="img-fluid  mt-2 elevation-2 forcedImg">
-            </div>
-            <div class="card-body ">
+                class="img-fluid  mt-2 elevation-2 forcedImg ">
+               <div class="card-body ">
               <div class="">
                 <p>{{post.body}}</p>
               </div>
@@ -61,5 +60,17 @@ export default {
   border-radius: 4px;
 }
 
+.post-card:hover{
+transform: scale(1.01);
+transition: all 0.3s ease-out;
+
+img  {
+
+ overflow: hidden;
+ transition: all 1s  ease;
+ border-radius: 4px;
+
+}
+}
 
 </style>

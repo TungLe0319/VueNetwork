@@ -1,41 +1,23 @@
 <template>
-  <div class="example"></div>
+  <div class="cover-img" :style="{backgroundImage: `url(${profile.coverImg})`}">
+
+
+
+  </div>
 </template>
 
 <script>
 import { onMounted } from "vue";
 import { useRoute } from "vue-router";
+import { Account } from "../models/Account.js";
 import Pop from "../utils/Pop.js";
 
 export default {
   props: {
-
+profile:{type: Account, required: true}
   },
 
   setup(props) {
-const route = useRoute()
-
-async function getProfileById(){
-  try {
-      
-    } catch (error) {
-      Pop.error(error,[''])
-    }
-}
-
-
-async function getProjectsByCreatorId(){
-  try {
-      
-    } catch (error) {
-      Pop.error(error,[''])
-    }
-}
-
-onMounted(()=>{
-  // getProfileById()
-  // getProjectsByCreatorId
-})
 
     return {
 
@@ -59,5 +41,12 @@ onMounted(()=>{
   object-fit: cover;
 }
 
+  .cover-img{
+    height: 50vh;
+    padding: 3rem;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+  }
 
 </style>

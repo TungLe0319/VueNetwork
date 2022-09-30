@@ -1,7 +1,7 @@
 <template>
-  <!-- <header>
+  <header>
     <Navbar />
-  </header> -->
+  </header>
    <main class="container-fluid">
     <div class="row">
       <div class="col-md-2 d-none d-md-block bg-dark text-light sidebar">
