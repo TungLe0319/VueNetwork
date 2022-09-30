@@ -33,6 +33,11 @@ class PostsService {
     AppState.posts = AppState.posts.filter(p => p.id !=id)
   }
 
+  async likePost(id){
+const res = await  api.post(`/api/posts/${id}/like`)
+//TODO update post when i like
+  }
+
   // async deleteClassified(id) {
   //   const res = await SandboxApi.delete(`api/classifieds/${id}`);
   //   // CAKE SAUCE strawberry middle 🍓
