@@ -3,7 +3,8 @@
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex align-items-center">
         <img src="https://cdn-icons-png.flaticon.com/512/2115/2115955.png" alt="" width="50" height="50">
-     Vueluptuous
+        <img src="https://r70.cooltext.com/rendered/cooltext420495850276005.png" alt="" >
+     
       </div>
     </router-link>
     <button

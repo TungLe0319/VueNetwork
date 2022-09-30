@@ -12,10 +12,19 @@
           class="rounded-circle forcedImg border border-3 border-warning"
         />
       </div>
-      <div class="me-3 text-shadow">
-        <i class="mdi mdi-github fs-2"></i>
-        <i class="mdi mdi-linkedin fs-2"></i>
-        <i class="mdi mdi-github fs-2"></i>
+      <div class="me-3 text-shadow  d-flex flex-column">
+        <span>
+
+          <i :class="profile.github? '' : 'text-dark opacity-50' " class="mdi mdi-github fs-2"></i>{{profile.github}}
+        </span>
+        <span>
+
+          <i :class="profile.linkedIn? '' : 'text-dark opacity-50' " class="mdi mdi-linkedin fs-2"></i>{{profile.linkedIn}}
+        </span>
+        <span>
+
+          <i :class="profile.resume? '' : 'text-dark opacity-50' " class="mdi mdi-text-box fs-2"></i>{{profile.resume}}
+        </span>
       </div>
     
     </div>
