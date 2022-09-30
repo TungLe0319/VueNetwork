@@ -2,19 +2,22 @@
   <div class="container-fluid">
     <div class="row scrollMe justify-content-center">
       <div class="col-md-12 d-flex justify-content-center">
-        <div class="d-flex justify-content-center mt-2">
+        <div class="d-flex justify-content-center mt-2"  >
+          
           <vs-button
-            class="me-2"
+        
+            class="me-2 p-0"
             @click="changePage(previousPage)"
             type="gradient"
-            >Previous</vs-button
+            ><i class="mdi mdi-arrow-left fs-2 "></i></vs-button
           >
 
           <vs-button
+         class="p-0"
             @click="changePage(nextPage)"
             color="warning"
             type="gradient"
-            >warning</vs-button
+            ><i class="mdi mdi-arrow-right fs-2"></i></vs-button
           >
         </div>
       </div>

@@ -1,4 +1,6 @@
 <template>
+
+
   <div class="example" v-if="profile">
     <ProfileDetail :profile="profile" />
   </div>
@@ -84,5 +86,11 @@ export default {
   height: 300px;
   width: 300px;
   object-fit: cover;
+}
+
+.cover-img{
+  height: 50vh;
+  width: 65.9vw;
+
 }
 </style>

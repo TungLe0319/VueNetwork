@@ -1,28 +1,25 @@
 <template>
-  <!-- <div class="cover-img" :style="{backgroundImage: `url(${profile.coverImg})`}">
-  </div> -->
+  
 
-  <div class="bg-light elevation-3 m-1 elevation-3 mt-5">
-    <div class="cover-img">
-      <img :src="profile.coverImg" :alt="profile.picture" class="cover-img" />
-    </div>
+  <div class="bg-light elevation-3 m-1 elevation-3 mt-5 cover-img" :style="{backgroundImage: `url(${profile.coverImg})`}">
+  
 
     <div class="d-flex justify-content-between align-items-center">
-      <div>
+      <div class="m-2" >
         <img
           :src="profile.picture"
           alt=""
           class="rounded-circle forcedImg border border-3 border-warning"
         />
       </div>
-      <div class="me-3">
+      <div class="me-3 text-shadow">
         <i class="mdi mdi-github fs-2"></i>
         <i class="mdi mdi-linkedin fs-2"></i>
         <i class="mdi mdi-github fs-2"></i>
       </div>
     
     </div>
-      <div class="mx-3 mt-3">
+      <div class="mx-3 mt-3 text-shadow">
        <p>   {{profile.class}}</p>
        <h5>{{profile.name}}</h5>
        <div>
@@ -77,7 +74,7 @@ export default {
 <style lang="scss" scoped>
 .text-shadow {
   color: aliceblue;
-  text-shadow: 1px 1px black, 0px 0px 5px salmon;
+  text-shadow: 1px 1px black, 0px 0px 5px rgb(162, 217, 239);
   font-weight: bold;
   letter-spacing: 0.08rem;
   /* Second Color  in text-shadow is the blur */
@@ -89,7 +86,7 @@ export default {
 }
 
 .cover-img {
-  height: 20vh;
+  height: 50vh;
   width: 100%;
   background-attachment: fixed;
   background-position: center;
