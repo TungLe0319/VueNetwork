@@ -116,7 +116,7 @@ export default {
 
       async deletePost(id) {
         try {
-          const yes = await Pop.confirm('Delete the Listing?');
+          const yes = await Pop.confirm('Delete the Post?');
           if (!yes) {
             return;
           }

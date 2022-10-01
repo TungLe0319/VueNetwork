@@ -1,8 +1,8 @@
 <template>
 
-  <div class="ads-cards">
+  <div class="d-flex text-end ">
      <vs-tooltip color="primary" :text="ad.title" position="left">
-   <img :src="ad.tall" alt="" class="img-fluid elevation-4 mt-2 rounded" >
+   <img :src="ad.tall" :alt="ad.title" class="img-fluid elevation-4 w-75  mt-2 rounded" >
     </vs-tooltip>
    
 

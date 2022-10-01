@@ -19,6 +19,7 @@ export const AppState = reactive({
   /** @type {import('./models/Account.js').Account[]} */
 profiles:[],
 
+activeImage:null,
 
   page: 0,
   lastPage: 0,

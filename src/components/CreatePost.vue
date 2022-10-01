@@ -11,7 +11,7 @@
       </div>
 
       <div class="postComment">
-        <form @submit="handleSubmit">
+        <form @submit.prevent="handleSubmit">
           <div class="form-group mb-2">
             <label for="bio"></label>
             <textarea

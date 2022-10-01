@@ -35,7 +35,13 @@
         <p>{{profile.bio}}</p>
        </div>
        <div class="d-flex justify-content-end">
-<button class="btn ">Edit</button>
+
+ <vs-tooltip text="Edit Account" position="left" color="primary">
+ <i class="mdi mdi-account-edit fs-1 btn text-light " data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+ </vs-tooltip>
+
+
+
        </div>
       </div>
   </div>

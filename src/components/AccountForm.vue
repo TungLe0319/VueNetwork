@@ -2,245 +2,166 @@
  
 
 
-<!--   
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasForm" aria-controls="offcanvasExample">
-  Button with data-bs-target
-</button>
-
-<div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasForm" aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Edit Profile</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-   <div class="Account-form">
-   <form @submit.prevent="handleSubmit">
-      <div class="form-group">
-           <label for="name">name</label>
-           <input
-             type="text"
-           v-model="editable.name"
-             placeholder="name"
-           
-             class="form-control"
-           />
-         </div>
-      <div class="form-group">
-           <label for="email">email</label>
-           <input
-             type="text"
-           v-model="editable.email"
-             placeholder="name"
-           
-             class="form-control"
-           />
-         </div>
-
-      <div class="form-group">
-        <label for="picture">picture</label>
-        <input
-          type="url"
-          v-model="editable.picture"
-          placeholder="url..."
-          class="form-control"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="coverImg">coverImage</label>
-        <input
-          type="url"
-          v-model="editable.coverImg"
-          placeholder="Image url..."
-          
-          class="form-control"
-       
-        />
-      </div>
-
-      
-
-
-
-
-      <div class="form-group">
-        <label for="github">Github</label>
-        <input
-          type="text"
-          v-model="editable.github"
-          placeholder="url..."
-          
-          class="form-control"
-          min="0"
-        />
-      </div>
-      <div class="form-group">
-        <label for="linkedIn">linkedIn</label>
-        <input
-          type="text"
-          v-model="editable.linkedIn"
-          placeholder="url..."
-          
-          class="form-control"
-          min="0"
-        />
-      </div>
-      <div class="form-group">
-        <label for="resume">resume</label>
-        <input
-          type="text"
-          v-model="editable.resume"
-          placeholder="url..."
-          
-          class="form-control"
-          min="0"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="bio">Bio:</label>
-        <textarea
-          v-model="editable.bio"
-          placeholder="bio."
-          class="form-control"
-          rows="4"
-        ></textarea>
-      </div>
-
-      <div class="my-3">
-        <button class="btn btn-success selectable" type="submit">Submit</button>
-      </div>
-    </form>
- </div>
-    
-  </div>
-</div> -->
-
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body FORM">
+<div class="modal  " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content bg-dark">
+   
+      <div class="modal-body FORM ">
         <!-- -------------------SECTION FORM----------------------------------- -->
-     <form @submit.prevent="handleSubmit">
+     <form @submit.prevent="handleSubmit" class="">
 <div class="row">
 <div class="col-md-6">
-  
-</div>
-
-</div>
-
-      <div class="form-group">
-           <label for="name">name</label>
+    <div class="form-group mt-1">
+           <label for="name">Name</label>
            <input
              type="text"
            v-model="editable.name"
              placeholder="name"
            
-             class="form-control"
+             class="form-control mt-2"
            />
          </div>
-      <div class="form-group">
-           <label for="email">email</label>
+      <div class="form-group mt-2">
+           <label for="email">Email</label>
            <input
              type="text"
            v-model="editable.email"
              placeholder="name"
            
-             class="form-control"
+             class="form-control mt-2"
            />
          </div>
 
-      <div class="form-group">
-        <label for="picture">picture</label>
+      <div class="form-group mt-2">
+        <label for="picture">Picture</label>
         <input
           type="url"
           v-model="editable.picture"
           placeholder="url..."
-          class="form-control"
+          class="form-control mt-2"
         />
       </div>
 
-      <div class="form-group">
-        <label for="coverImg">coverImage</label>
-        <input
-          type="url"
-          v-model="editable.coverImg"
-          placeholder="Image url..."
-          
-          class="form-control"
-       
-        />
+    <div class="form-group d-flex align-items-center">
+  
+        <label class="form-check-label mt-2 me-3" for="graduated">
+          <vs-tooltip text="Graduated" position="bottom" color="primary">
+
+            <i class="mdi mdi-school fs-2"></i> 
+          </vs-tooltip>
+        </label>
+
+   
+      <div>
+
+
+        <input class="form-check-input checkbox"  type="checkbox" name="graduated" v-model="editable.graduated"  >
       </div>
 
       
+</div>
+       <div class="form-group mt-2">
+        <label for="resume">Class</label>
+        <input
+          type="text"
+          v-model="editable.class"
+          placeholder="Class of..."
+          
+          class="form-control  mt-2"
+          min="0"
+        />
+      </div>
+      
 
 
+</div>
 
+<div class="col-md-6">
+  <img :src="account.picture" alt="" class="img-fluid forcedImg">
+</div>
 
-      <div class="form-group">
+<div class="col-md-6">
+
+      <div class="form-group mt-2">
         <label for="github">Github</label>
         <input
           type="text"
           v-model="editable.github"
           placeholder="url..."
           
-          class="form-control"
+          class="form-control mt-2"
           min="0"
         />
       </div>
-      <div class="form-group">
-        <label for="linkedIn">linkedIn</label>
+      <div class="form-group mt-2">
+        <label for="linkedIn">LinkedIn</label>
         <input
           type="text"
           v-model="editable.linkedIn"
-          placeholder="url..."
+          placeholder="linkedIn url..."
           
-          class="form-control"
+          class="form-control mt-2"
           min="0"
         />
       </div>
-      <div class="form-group">
-        <label for="resume">resume</label>
+      <div class="form-group mt-2">
+        <label for="resume">Resume</label>
         <input
           type="text"
           v-model="editable.resume"
-          placeholder="url..."
+          placeholder="Resume url..."
           
-          class="form-control"
+          class="form-control  mt-2"
           min="0"
         />
       </div>
+   
+  
+</div>
+<div class="col-md-6">
+  <div>
+    <img :src="account.coverImg" alt="" class="forcedImg smallerImg mt-2">
+  </div>
+  <div class="form-group mt-2">
+        <label for="coverImg">CoverImage</label>
+        <input
+          type="url"
+          v-model="editable.coverImg"
+          placeholder="Image url..."
+          
+          class="form-control mt-2"
+       
+        />
+      </div>
 
-      <div class="form-group">
-        <label for="bio">Bio:</label>
+
+</div>
+</div>
+
+  
+
+
+
+      <div class="form-group mt-2">
+        <label class="" for="bio">Bio:</label>
         <textarea
           v-model="editable.bio"
           placeholder="bio."
-          class="form-control"
+          class="form-control mt-2"
           rows="4"
         ></textarea>
       </div>
 
-      <div class="my-3">
+      <div class="my-3 position-absolute">
         <button class="btn btn-success selectable" type="submit">Submit</button>
       </div>
     </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+    
+        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      
     </div>
   </div>
 </div>
@@ -277,7 +198,30 @@ export default {
 </script>
 
 <style scoped>
-img {
-  max-width: 100px;
+.forcedImg{
+border-radius: 4px;
+border: dashed 4px rgb(146, 197, 245);
 }
+.checkbox{
+  width: 30px;
+  height: 30px;
+}
+
+.smallerImg{
+  height: 200px;
+  width: 375px;
+  object-fit: cover;
+}
+
+.form-Banner{
+  background-image: url(https://i.pinimg.com/564x/ca/db/46/cadb46a6ac190342d8152d4240952333.jpg);
+background-position: center;
+background-size: cover;
+
+}
+
+
+
+
+
 </style>

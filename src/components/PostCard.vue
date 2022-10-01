@@ -1,6 +1,6 @@
 <template>
-  <div class="post-card position-relative">
-    <div class="card elevation-3 mx-4 my-2">
+  <div class="post-card position-relative" >
+    <div class="card elevation-3 mx-4 my-2" :class="post.creator.id == account.id? 'accountImages' :''">
       <div class="d-flex">
         <PostCreator :creator="post.creator" />
        
@@ -8,14 +8,19 @@
 
       <!-- POST DOWN BELOW -->
       <div class="p-2 lineSpacing">
-        <p>{{ post.body }}</p>
+        <p class="ms-2">{{ post.body }}</p>
       </div>
 
+      <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> -->
       <img
         v-if="post.imgUrl"
         :src="post?.imgUrl"
         alt=""
         class="img-fluid mt-2 elevation-2 forcedImg"
+        data-bs-toggle="modal" data-bs-target="#exampleModal"
+        @click="setActivePicture()"
       />
 
       <div
@@ -24,7 +29,7 @@
         <!-- Delete Post Button -->
         <div class="position-absolute top-0 end-0 " v-if="post.creator.id == account.id" >
           <button @click.stop="$emit('deletePost')" class="btn">
-            <i class="mdi mdi-minus-box fs-4"></i>
+        <img src="https://cdn-icons-png.flaticon.com/512/458/458594.png" alt="" class="deleteImg">
           </button>
         </div>
         <div class="d-flex" v-if="user.isAuthenticated" >
@@ -42,6 +47,7 @@
       </div>
     </div>
   </div>
+ 
 </template>
 
 <script>
@@ -64,6 +70,8 @@ export default {
       user:computed(() => AppState.user),
       async likePost() {
         try {
+ 
+              
           await postService.likePost(props.post.id);
         } catch (error) {
           Pop.error(error, '[likePost]');
@@ -80,8 +88,16 @@ export default {
           } catch (error) {
             Pop.error(error,[''])
           }
+      },
+
+      setActivePicture(){
+
+        AppState.activeImage = props.post.imgUrl
+        console.log(AppState.activeImage);
       }
     };
+
+   
   },
   components: { PostCreator },
 };
@@ -100,7 +116,16 @@ export default {
   width: auto;
   object-fit: cover;
 }
-
+.deleteImg {
+  height:50px;
+  width: 50px;
+  object-fit: cover;
+}
+.deleteImg:hover{
+filter: brightness(120%);
+transform: rotate(180deg);
+transition: all 1.0s ease;
+}
 .accountPicture {
   height: 100px;
   width: 100px;
@@ -121,5 +146,9 @@ export default {
 }
 p{
   font-weight: 700;
+}
+
+.accountImages{
+  border: 4px double powderblue;
 }
 </style>

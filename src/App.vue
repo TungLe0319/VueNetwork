@@ -33,12 +33,27 @@
         <router-view />
       </div>
 
-      <div class="col-md-2  ">
+      <div class="col-md-2 ">
         
-        <div v-for="a in ads" class="d-flex justify-content-center ">
+        <div v-for="a in ads" class="d-flex  ms-5  ">
           <Ads :ad="a" />
         </div>
       </div>
+      
+
+      <!--  -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+     
+      <div class="modal-body modal1" :style="{backgroundImage: `url(${activeImg})`}">
+        <!-- <img :src="activeImg" alt="" class=" img-fluid"> -->
+      </div>
+     
+    </div>
+  </div>
+</div>
+      <!--  -->
     </div>
   </main>
 </template>
@@ -68,6 +83,7 @@ export default {
     return {
       appState: computed(() => AppState),
       ads: computed(() => AppState.ads),
+      activeImg: computed(() => AppState.activeImage)
     };
   },
   components: { Navbar, Ads, SideBar },
@@ -102,6 +118,17 @@ background-size: cover;
 
 .ad-Banner{
   height: 80vh;
+}
+
+.modal1{
+  height: 80vh;
+  background-position: center;
+  background-size: cover;
+  border: 4px dashed aliceblue;
+}
+
+.adColumn{
+ height: 10vh;
 }
 </style>
 

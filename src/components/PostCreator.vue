@@ -11,7 +11,7 @@
   
 
   <div class="d-flex align-items-center mt-4">
-    <h6>{{ creator.name }}</h6>
+    <h6 class="text-primary">{{ creator.name }}</h6>
     <span v-if="creator.graduated"> <i class="mdi mdi-school fs-2"></i> </span>
   </div>
 </template>
@@ -42,5 +42,11 @@ export default {
   height: 50px;
   width: 50px;
   object-fit: cover;
+}
+
+h6{
+  font-size: large;
+  font-weight: 800;
+  
 }
 </style>

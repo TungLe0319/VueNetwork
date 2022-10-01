@@ -80,4 +80,36 @@ export default class Pop {
   static success(message = 'Success!') {
     this.toast(message, 'success')
   }
+
+
+
+
+  
+  /**
+ *
+ * @param {string} title The title text
+ * @param {'success' | 'error' | 'info' | 'warning' | 'question'} icon
+ * @param {'top' | 'top-start' | 'top-end' | 'center' | 'center-start' | 'center-end' | 'bottom' | 'bottom-start' | 'bottom-end'} position
+ * @param {number} timer Time in milliseconds.
+ * @param {boolean} progressBar Show progress bar or not respectively.
+ * -----------------------------------
+ * {@link https://sweetalert2.github.io/#configuration|Check out Sweet Alerts}
+ */
+  static customTung() {
+  Swal.fire({
+  title: 'Custom width, padding, color, background.',
+  width: 600,
+  padding: '3em',
+  color: '#716add',
+  background: '#fff url(/images/trees.png)',
+  backdrop: `
+    rgba(0,0,123,0.4)
+    url("/images/nyan-cat.gif")
+    left top
+    no-repeat
+  `
+})
+  }
+
+  
 }
