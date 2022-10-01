@@ -49,22 +49,31 @@ class PostsService {
   }
 
   async likePost(id) {
+
     const res = await api.post(`/api/posts/${id}/like`);
     console.log(res.data);
     let post = AppState.posts.findIndex((p) => p.id == id);
     AppState.posts.splice(post, 1, new Post(res.data));
-    AppState.likesAccounts = res.data.likes.map(l => new Account(l))
-   console.log(AppState.likesAccounts,'testintg');
-   let myLike = AppState.likesAccounts.find(i => i.id == AppState.account.id)
-   AppState.myLike = new Account(myLike)
+  //   AppState.likesAccounts = res.data.likes.map(l => new Account(l))
+  //  console.log(AppState.likesAccounts,'testintg');
+  //  let myLike = AppState.likesAccounts.find(i => i.id == AppState.account.id)
+  //  AppState.myLike = new Account(myLike)
    
-   console.log(AppState.myLike,'test23');
+  //  console.log(AppState.myLike,'test23');
+
+  AppState.likesAccounts = res.data.likes
+    let myLike = AppState.likesAccounts.find((i) => i.id == AppState.account.id);
+   AppState.myLike = new Account(myLike);
+   console.log(AppState.myLike);
+
+
+
   }
 
   async findMyLike(id){
-    let myLike = AppState.likeIds.find(i => i.id == id)
-    AppState.myLike = new LikeIds(myLike)
-    console.log(AppState.myLike);
+   let myLike = AppState.likesAccounts.find(i => i.id == id)
+   AppState.myLike = new Account(myLike)
+   console.log(AppState.myLike);
   }
 }
 export const postService = new PostsService();

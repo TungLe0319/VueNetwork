@@ -1,28 +1,33 @@
 <template>
   <div class="">
  
+    <div  >
+<PostCreator   v-for="p in profiles" :creator="p" />
+    </div>
 
 
-      <img
+      <!-- <img
         :src="profile.picture"
         alt=""
         class="forcedImg rounded m-1 elevation-4"
-      />
+      /> -->
 
   </div>
 </template>
 
 <script>
+import { computed } from "@vue/reactivity";
+import { AppState } from "../AppState.js";
 import { Account } from '../models/Account.js';
+import PostCreator from "./PostCreator.vue";
 
 export default {
-  props: {
-    profile: { type: Account, required: true },
-  },
-
-  setup(props) {
-    return {};
-  },
+    setup(props) {
+        return {
+            profiles: computed(() => AppState.profiles)
+        };
+    },
+    components: { PostCreator }
 };
 </script>
 

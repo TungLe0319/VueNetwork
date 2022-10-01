@@ -1,6 +1,8 @@
 <template>
-  <div class="post-card position-relative" >
+  <div class="post-card position-relative"  >
     <div class="card elevation-3 mx-4 my-2" :class="post.creator.id == account.id? 'accountImages' :''">
+     
+ 
       <div class="d-flex">
         <PostCreator :creator="post.creator" />
        
@@ -8,7 +10,7 @@
 
       <!-- POST DOWN BELOW -->
       <div class="p-2 lineSpacing">
-        <p class="ms-2">{{ post.body }}</p>
+        <p  class="ms-2">{{ post.body }}</p>
       </div>
 
       <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -33,7 +35,7 @@
           </button>
         </div>
         <div class="d-flex" v-if="user.isAuthenticated" >
-          
+        
           <p>{{ post.likeIds.length }}</p>
           <i :disabled="!user.isAuthenticated"   @click="likePost()"  class="mdi mdi-star fs-2 selectable text-warning text-shadow rounded" ></i>
         </div>
@@ -68,7 +70,7 @@ export default {
     return {
       account:computed(()=> AppState.account),
       user:computed(() => AppState.user),
-      // myLike:computed(()=>AppState.likeIds),
+      myLike:computed(()=>AppState.myLike),
       async likePost() {
         try {
  

@@ -2,8 +2,8 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12"></div>
-      <div class="col-md-3" v-for="x in profiles" :key="x">
-        <ProfileCards :profile="x" />
+      <div class="col-md-3" >
+        <ProfileCards  />
       </div>
     </div>
     <div class="row scrollMe justify-content-center">
