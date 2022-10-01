@@ -35,14 +35,14 @@
         <div class="d-flex" v-if="user.isAuthenticated" >
           
           <p>{{ post.likeIds.length }}</p>
-          <i :disabled="!user.isAuthenticated"   @click="likePost()" class="mdi mdi-star fs-2 selectable text-warning text-shadow rounded"></i>
+          <i :disabled="!user.isAuthenticated"   @click="likePost()"  class="mdi mdi-star fs-2 selectable text-warning text-shadow rounded" ></i>
         </div>
         <div class="d-flex" v-else>
             <p>{{ post.likeIds.length }}</p>
-            <i  class="mdi mdi-star fs-2  text-warning text-shadow rounded"></i>
+            <i :class="post.likeIds.length" class="mdi mdi-star fs-2  text-warning text-shadow rounded"></i>
         </div>
          <div>
-          <p @click="findMyLike()" class="text-shadow">{{new Date(post.createdAt).toLocaleString('en-Us') }}</p> 
+          <p @click="findMyLike()" class="text-shadow">{{new Date(post.createdAt).toLocaleString('en-Us',{hour:'numeric',day:"2-digit", weekday:'short'},) }}</p> 
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
 
 <script>
 import { computed } from "@vue/reactivity";
-import { hoursToMinutes } from 'date-fns';
+import { daysInWeek, hoursToMinutes } from 'date-fns';
 import { AppState } from "../AppState.js";
 import { Account } from '../models/Account.js';
 import { Post } from '../models/Post.js';
@@ -68,6 +68,7 @@ export default {
     return {
       account:computed(()=> AppState.account),
       user:computed(() => AppState.user),
+      // myLike:computed(()=>AppState.likeIds),
       async likePost() {
         try {
  
@@ -84,7 +85,7 @@ export default {
 
       async findMyLike(){
         try {
-            await postService.findMyLike(props.post.likeIds)
+            await postService.findMyLike(this.account.id)
           } catch (error) {
             Pop.error(error,[''])
           }
@@ -149,6 +150,6 @@ p{
 }
 
 .accountImages{
-  border: 4px double powderblue;
+  border: 4px double rgb(145, 155, 212);
 }
 </style>

@@ -33,7 +33,7 @@
         <router-view />
       </div>
 
-      <div class="col-md-2 ">
+      <div class="col-md-2 d-none d-md-block">
         
         <div v-for="a in ads" class="d-flex  ms-5  ">
           <Ads :ad="a" />
@@ -92,7 +92,10 @@ export default {
 <style lang="scss">
 @import './assets/scss/main.scss';
 main{
-  background-color: #f8fcfb;
+  // background-color: #f8fcfb;
+    background-image: url(https://wallpapercave.com/wp/wp2682130.png);
+background-position: center;
+background-size: cover;
 }
 
 ::-webkit-scrollbar {

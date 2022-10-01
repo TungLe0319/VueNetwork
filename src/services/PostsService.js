@@ -1,7 +1,8 @@
 import { AppState } from '../AppState.js';
 import { Post } from '../models/Post.js';
 import { api, postApi } from './AxiosService.js';
-
+import {LikeIds} from '../models/LikeIds.js'
+import { Account } from "../models/Account.js";
 class PostsService {
   async getPostsBySearchTerm(term, page = 1) {
     const res = await api.get('/api/posts', {
@@ -10,7 +11,7 @@ class PostsService {
         page,
       },
     });
-    console.log(res.data);
+    // console.log(res.data);
     (AppState.posts = res.data.posts.map((p) => new Post(p))),
       (AppState.page = res.data.page);
 
@@ -19,7 +20,7 @@ class PostsService {
   }
   async getPosts(page) {
     const res = await postApi.get(page);
-    console.log(res.data);
+    // console.log(res.data);
     AppState.posts = res.data.posts.map((p) => new Post(p));
     AppState.nextPage = res.data.older;
     AppState.previousPage = res.data.newer;
@@ -30,7 +31,7 @@ class PostsService {
     const res = await api.get(`api/profiles/${creatorId}/posts`, {
       params: creatorId,
     });
-    console.log(res.data);
+    // console.log(res.data);
     AppState.posts = res.data.posts.map((p) => new Post(p));
     AppState.nextPage = res.data.older;
     AppState.previousPage = res.data.newer;
@@ -52,12 +53,18 @@ class PostsService {
     console.log(res.data);
     let post = AppState.posts.findIndex((p) => p.id == id);
     AppState.posts.splice(post, 1, new Post(res.data));
-    //TODO update post when i like
+    AppState.likesAccounts = res.data.likes.map(l => new Account(l))
+   console.log(AppState.likesAccounts,'testintg');
+   let myLike = AppState.likesAccounts.find(i => i.id == AppState.account.id)
+   AppState.myLike = new Account(myLike)
+   
+   console.log(AppState.myLike,'test23');
   }
 
   async findMyLike(id){
-    console.log('Hi', id);
-    // AppState.posts.find(p => p.likeIds == id)
+    let myLike = AppState.likeIds.find(i => i.id == id)
+    AppState.myLike = new LikeIds(myLike)
+    console.log(AppState.myLike);
   }
 }
 export const postService = new PostsService();

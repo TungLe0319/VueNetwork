@@ -23,7 +23,7 @@
             ></textarea>
           </div>
           <div class="form-group d-flex" >
-            <vs-tooltip color="warning" text="Image/Video" position="right">
+            <vs-tooltip color="warning" text="Image/Video" position="left">
               <i class="mdi mdi-image fs-2 text-primary "></i>
             </vs-tooltip>
 
@@ -37,6 +37,7 @@
           </div>
 
           <div class="d-flex justify-content-end mb-2">
+           
             <div class="d-flex justify-content-end">
               <vs-tooltip color="warning" text="Post" position="left">
                 <button type="submit" class="btn px-1 py-0">
