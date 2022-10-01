@@ -17,13 +17,12 @@ import { useRoute } from "vue-router";
 import { AppState } from '../AppState';
 import AccountForm from '../components/AccountForm.vue';
 import ProfileDetail from "../components/ProfileDetail.vue";
-import { profilesService } from "../services/ProfilesService.js";
 import Pop from "../utils/Pop.js";
 
 export default {
   
     setup() {
-      //  const route = useRoute();
+     
 
     async function getProfileById() {
       try {

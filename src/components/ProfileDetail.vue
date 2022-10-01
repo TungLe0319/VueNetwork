@@ -1,7 +1,7 @@
 <template>
   
 
-  <div class="bg-light elevation-3 m-1 elevation-3 mt-5 cover-img" :style="{backgroundImage: `url(${profile.coverImg})`}">
+  <div class="bg-light elevation-3 m-1 elevation-3 mt-5 rounded border border-secondary border-2 cover-img" :style="{backgroundImage: `url(${profile.coverImg})`}">
   
 
     <div class="d-flex justify-content-between align-items-center">

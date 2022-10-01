@@ -22,7 +22,7 @@ class ProfilesService {
 
     AppState.lastPage = res.data.total_pages;
     AppState.term = term;
-    console.log('AppState.profiles:',AppState.profiles);
+   
   }
 }
 

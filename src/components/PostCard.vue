@@ -3,9 +3,10 @@
     <div class="card elevation-3 mx-4 my-2">
       <div class="d-flex">
         <PostCreator :creator="post.creator" />
+       
       </div>
 
-<!-- POST DOWN BELOW -->
+      <!-- POST DOWN BELOW -->
       <div class="p-2">
         <h6>{{ post.body }}</h6>
       </div>
@@ -20,13 +21,19 @@
       <div
         class="card-footer bg-secondary d-flex justify-content-between align-items-center"
       >
-      <!-- Delete Post Button -->
+        <!-- Delete Post Button -->
         <div class="position-absolute top-0 end-0">
-          <button @click.stop="$emit('deletePost')" class="btn"><i class="mdi mdi-minus-box fs-4"></i></button>
+          <button @click.stop="$emit('deletePost')" class="btn">
+            <i class="mdi mdi-minus-box fs-4"></i>
+          </button>
         </div>
-        <div class="d-flex ">
+        <div class="d-flex">
+          
           <h6>{{ post.likeIds.length }}</h6>
           <i @click="likePost()" class="mdi mdi-star fs-2 selectable"></i>
+        </div>
+         <div>
+          <p class="text-shadow">{{new Date(post.createdAt).toLocaleString('en-Us') }}</p> 
         </div>
       </div>
     </div>
@@ -34,29 +41,28 @@
 </template>
 
 <script>
-import { Account } from "../models/Account.js";
+import { hoursToMinutes } from 'date-fns';
+import { Account } from '../models/Account.js';
 import { Post } from '../models/Post.js';
-import { postService } from "../services/PostsService.js";
-import Pop from "../utils/Pop.js";
+import { postService } from '../services/PostsService.js';
+import Pop from '../utils/Pop.js';
 import PostCreator from './PostCreator.vue';
 
 export default {
   props: {
     post: { type: Post, required: true },
-  
   },
   setup(props) {
     return {
-
-    async likePost(){
-      try {
-          await postService.likePost(props.post.id)
+      async likePost() {
+        try {
+          await postService.likePost(props.post.id);
         } catch (error) {
-          Pop.error(error,'[likePost]')
+          Pop.error(error, '[likePost]');
         }
-    },
+      },
 
-       deletePost() {
+      deletePost() {
         emit('deletePost');
       },
     };
