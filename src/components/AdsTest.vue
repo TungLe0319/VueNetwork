@@ -1,29 +1,39 @@
 <template>
 
   <div class="ads-cards">
-     <vs-tooltip color="primary" :text="ad.title" position="left">
+     <!-- <vs-tooltip color="primary" :text="ad.title" position="left">
    <img :src="ad.tall" alt="" class="img-fluid elevation-4 mt-2 rounded" >
-    </vs-tooltip>
+    </vs-tooltip> -->
    
+    
+    
+    <n-carousel autoplay>
+      <img :src="ad.tall" alt="" class="img-fluid elevation-4 mt-2 rounded" >
+   
+      
+  </n-carousel>
 
   </div>
 </template>
 
 <script>
+ import { defineComponent } from 'vue'
+  import { NButton , NCard, NCarousel, } from 'naive-ui'
 import { Ad } from "../models/Ad.js";
-
-export default {
-  props: {
+  export default defineComponent({
+    components: {
+      NButton, NCard, NCarousel
+    },
+      props: {
 ad:{type: Ad, required:true}
   },
 
-  setup(props) {
-
-    return {
-
-    };
-  },
-};
+   setup(){
+      return{
+        
+      }
+    }
+  })
 </script>
 
 <style lang="scss" scoped>

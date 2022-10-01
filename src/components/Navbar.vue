@@ -64,7 +64,7 @@ a:hover {
 .menu-bar{
   /* background-image:  linear-gradient(-90deg, #d38312, #a83279); */
  
-    background: linear-gradient(40deg, #45cafc, #303f9f) !important;
+    background: linear-gradient(40deg, #c1f3ff, #10226e) !important;
 
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="card elevation-3 mx-4 my-2">
+  <div class="bg-light p-2 elevation-3 mx-4 my-2 customBorder">
     <div class="d-flex justify-content-around ms-4">
       <div class="me-2 mt-4" v-if="acc.picture">
         <img :src="acc.picture" alt="" class="forcedImg rounded-circle" />
@@ -97,7 +97,7 @@ export default {
 
 .forcedImg:hover {
   filter: opacity(90%);
-  transform: scale(1.5);
+  transform: scale(1.1);
   transition: all 0.5s ease-out;
   box-shadow: 1px 1px black, 0px 0px 5px rgb(182, 222, 246);
 }
@@ -105,5 +105,13 @@ export default {
   width: 450px;
 }
 
+.customBorder{
+  border: 4px dashed rgb(32, 138, 236);
+}
 
+.customBorder:hover{
+  border: 4px dashed #0c1b60;
+  transform: scale(1.02);
+  transition: all .3s ease;
+}
 </style>

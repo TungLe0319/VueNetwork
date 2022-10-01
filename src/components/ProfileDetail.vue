@@ -1,7 +1,7 @@
 <template>
   
 
-  <div class="bg-light elevation-3 m-1 elevation-3 mt-5 rounded border border-secondary border-2 cover-img" :style="{backgroundImage: `url(${profile.coverImg})`}">
+  <div class="bg-light elevation-3 m-1 elevation-3 mt-2 rounded border border-secondary border-1 cover-img" :style="{backgroundImage: `url(${profile.coverImg})`}">
   
 
     <div class="d-flex justify-content-between align-items-center">
@@ -28,9 +28,9 @@
       </div>
     
     </div>
-      <div class="mx-3 mt-3 text-shadow">
-       <p>   {{profile.class}}</p>
-       <h5>{{profile.name}}</h5>
+      <div class="mx-3 mt-3 text-shadow ">
+       <p class="">   {{profile.class}}</p>
+       <h5 >{{profile.name}}</h5>
        <div>
         <p>{{profile.bio}}</p>
        </div>
@@ -100,5 +100,9 @@ export default {
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
+  ;
+}
+.customBg{
+  background-color: rgba(14, 1, 1, 0.219);
 }
 </style>

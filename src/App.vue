@@ -33,7 +33,7 @@
         <router-view />
       </div>
 
-      <div class="col-md-2 ">
+      <div class="col-md-2  ">
         
         <div v-for="a in ads" class="d-flex justify-content-center ">
           <Ads :ad="a" />
@@ -92,6 +92,16 @@ main{
 background-position: center;
 background-size: cover;
 
+}
+
+.profile-Banner:hover{
+  transform: scale(1.01);
+  filter: brightness(110%);
+  transition: all 0.3s ease;
+}
+
+.ad-Banner{
+  height: 80vh;
 }
 </style>
 

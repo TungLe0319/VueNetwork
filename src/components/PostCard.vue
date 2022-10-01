@@ -7,8 +7,8 @@
       </div>
 
       <!-- POST DOWN BELOW -->
-      <div class="p-2">
-        <h6>{{ post.body }}</h6>
+      <div class="p-2 lineSpacing">
+        <p>{{ post.body }}</p>
       </div>
 
       <img
@@ -19,21 +19,25 @@
       />
 
       <div
-        class="card-footer bg-secondary d-flex justify-content-between align-items-center"
+        class="card-footer customBg d-flex justify-content-between align-items-center"
       >
         <!-- Delete Post Button -->
-        <div class="position-absolute top-0 end-0">
+        <div class="position-absolute top-0 end-0 " v-if="post.creator.id == account.id" >
           <button @click.stop="$emit('deletePost')" class="btn">
             <i class="mdi mdi-minus-box fs-4"></i>
           </button>
         </div>
-        <div class="d-flex">
+        <div class="d-flex" v-if="user.isAuthenticated" >
           
-          <h6>{{ post.likeIds.length }}</h6>
-          <i @click="likePost()" class="mdi mdi-star fs-2 selectable"></i>
+          <p>{{ post.likeIds.length }}</p>
+          <i :disabled="!user.isAuthenticated"   @click="likePost()" class="mdi mdi-star fs-2 selectable text-warning text-shadow rounded"></i>
+        </div>
+        <div class="d-flex" v-else>
+            <p>{{ post.likeIds.length }}</p>
+            <i  class="mdi mdi-star fs-2  text-warning text-shadow rounded"></i>
         </div>
          <div>
-          <p class="text-shadow">{{new Date(post.createdAt).toLocaleString('en-Us') }}</p> 
+          <p @click="findMyLike()" class="text-shadow">{{new Date(post.createdAt).toLocaleString('en-Us') }}</p> 
         </div>
       </div>
     </div>
@@ -41,7 +45,9 @@
 </template>
 
 <script>
+import { computed } from "@vue/reactivity";
 import { hoursToMinutes } from 'date-fns';
+import { AppState } from "../AppState.js";
 import { Account } from '../models/Account.js';
 import { Post } from '../models/Post.js';
 import { postService } from '../services/PostsService.js';
@@ -54,6 +60,8 @@ export default {
   },
   setup(props) {
     return {
+      account:computed(()=> AppState.account),
+      user:computed(() => AppState.user),
       async likePost() {
         try {
           await postService.likePost(props.post.id);
@@ -65,6 +73,14 @@ export default {
       deletePost() {
         emit('deletePost');
       },
+
+      async findMyLike(){
+        try {
+            await postService.findMyLike(props.post.likeIds)
+          } catch (error) {
+            Pop.error(error,[''])
+          }
+      }
     };
   },
   components: { PostCreator },
@@ -74,7 +90,7 @@ export default {
 <style lang="scss" scoped>
 .text-shadow {
   color: aliceblue;
-  text-shadow: 1px 1px black, 0px 0px 5px salmon;
+  text-shadow: 1px 1px black, 0px 0px 5px rgb(145, 141, 140);
   font-weight: bold;
   letter-spacing: 0.08rem;
   /* Second Color  in text-shadow is the blur */
@@ -95,5 +111,15 @@ export default {
 .post-card:hover {
   transform: scale(1.01);
   transition: all 0.3s ease-out;
+}
+
+.lineSpacing{
+  letter-spacing: 0.05rem;
+}
+.customBg{
+  background-color:#c2e4f32f ;
+}
+p{
+  font-weight: 700;
 }
 </style>

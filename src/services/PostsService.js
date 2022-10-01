@@ -8,7 +8,6 @@ class PostsService {
       params: {
         query: term,
         page,
-     
       },
     });
     console.log(res.data);
@@ -50,31 +49,15 @@ class PostsService {
 
   async likePost(id) {
     const res = await api.post(`/api/posts/${id}/like`);
+    console.log(res.data);
+    let post = AppState.posts.findIndex((p) => p.id == id);
+    AppState.posts.splice(post, 1, new Post(res.data));
     //TODO update post when i like
   }
 
-  // async deleteClassified(id) {
-  //   const res = await SandboxApi.delete(`api/classifieds/${id}`);
-  //   // CAKE SAUCE strawberry middle 🍓
-  //   AppState.classifieds = AppState.classifieds.filter((c) => c.id != id);
-  // }
+  async findMyLike(id){
+    console.log('Hi', id);
+    // AppState.posts.find(p => p.likeIds == id)
+  }
 }
-
-//  async getProjectsByCreatorId(creatorId) {
-//     AppState.projects = [] // NOTE empty the projects to avoid data flashing
-//     const res = await SandboxApi.get('api/projects', {
-//       params: {
-//         creatorId
-//       }
-//     })
-
-//     AppState.projects = res.data.map(p => new Project(p))
-
-//   }
-
-// async createClassified(formData) {
-//   const res = await SandboxApi.post('/api/classifieds', formData)
-//   AppState.classifieds.push(new Classified(res.data))
-//   // AppState.classifieds = [...AppState.classifieds, new Classified(res.data)]
-// }
 export const postService = new PostsService();

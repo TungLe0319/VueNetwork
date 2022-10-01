@@ -10,6 +10,9 @@ const root = createApp(App)
 registerGlobalComponents(root)
   import 'vuesax3/dist/vuesax.css'; //Vuesax styles
    import Vuesax from 'vuesax3';
+
+
+
 root
   .use(router).use(Vuesax)
   .mount('#app')

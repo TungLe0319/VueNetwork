@@ -4,6 +4,7 @@
       <img
         :src="creator.picture"
         class="accountPicture elevation-4 mt-2 rounded-circle forcedImg"
+        :alt="creator.name"
       />
     </router-link>
   </div>
