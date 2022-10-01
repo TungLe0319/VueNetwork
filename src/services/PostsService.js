@@ -3,6 +3,21 @@ import { Post } from '../models/Post.js';
 import { api, postApi } from './AxiosService.js';
 
 class PostsService {
+  async getPostsBySearchTerm(term, page = 1) {
+    const res = await api.get('/api/posts', {
+      params: {
+        query: term,
+        page,
+     
+      },
+    });
+    console.log(res.data);
+    (AppState.posts = res.data.posts.map((p) => new Post(p))),
+      (AppState.page = res.data.page);
+
+    AppState.lastPage = res.data.total_pages;
+    AppState.term = term;
+  }
   async getPosts(page) {
     const res = await postApi.get(page);
     console.log(res.data);
@@ -24,18 +39,18 @@ class PostsService {
 
   async createPost(formData) {
     const res = await api.post('api/posts', formData);
-    AppState.posts = [new Post(res.data) ,...AppState.posts]
+    AppState.posts = [new Post(res.data), ...AppState.posts];
     // AppState.posts.push(new Post(res.data));
   }
 
   async deletePost(id) {
     const res = await api.delete(`/api/posts/${id}`);
-    AppState.posts = AppState.posts.filter(p => p.id !=id)
+    AppState.posts = AppState.posts.filter((p) => p.id != id);
   }
 
-  async likePost(id){
-const res = await  api.post(`/api/posts/${id}/like`)
-//TODO update post when i like
+  async likePost(id) {
+    const res = await api.post(`/api/posts/${id}/like`);
+    //TODO update post when i like
   }
 
   // async deleteClassified(id) {
@@ -44,8 +59,6 @@ const res = await  api.post(`/api/posts/${id}/like`)
   //   AppState.classifieds = AppState.classifieds.filter((c) => c.id != id);
   // }
 }
-
-
 
 //  async getProjectsByCreatorId(creatorId) {
 //     AppState.projects = [] // NOTE empty the projects to avoid data flashing
@@ -59,11 +72,9 @@ const res = await  api.post(`/api/posts/${id}/like`)
 
 //   }
 
-
-
-  // async createClassified(formData) {
-  //   const res = await SandboxApi.post('/api/classifieds', formData)
-  //   AppState.classifieds.push(new Classified(res.data))
-  //   // AppState.classifieds = [...AppState.classifieds, new Classified(res.data)]
-  // }
+// async createClassified(formData) {
+//   const res = await SandboxApi.post('/api/classifieds', formData)
+//   AppState.classifieds.push(new Classified(res.data))
+//   // AppState.classifieds = [...AppState.classifieds, new Classified(res.data)]
+// }
 export const postService = new PostsService();

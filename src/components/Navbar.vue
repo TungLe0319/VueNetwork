@@ -3,7 +3,6 @@
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex align-items-center">
         <img src="https://cdn-icons-png.flaticon.com/512/2115/2115955.png" alt="" width="50" height="50">
-        <img src="https://r70.cooltext.com/rendered/cooltext420495850276005.png" alt="" >
      
       </div>
     </router-link>
@@ -24,7 +23,7 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li>
-       
+       <search-profiles/>
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
@@ -36,11 +35,13 @@
 
 <script>
 import Login from './Login.vue'
+import SearchProfiles from "./SearchProfiles.vue";
+import SearchProfiles1 from "./SearchProfiles.vue";
 export default {
   setup() {
     return {}
   },
-  components: { Login }
+  components: { Login, SearchProfiles }
 }
 </script>
 

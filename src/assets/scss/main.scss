@@ -43,3 +43,15 @@ form:invalid button[type="submit"] {
   filter: grayscale(1);
   pointer-events: none;
 }
+
+
+// input[type=text] {
+//   width: 130px;
+//   -webkit-transition: width 0.4s ease-in-out;
+//   transition: width 0.4s ease-in-out;
+// }
+
+// /* When the input field gets focus, change its width to 100% */
+// input[type=text]:focus {
+//   width: 100%;
+// }

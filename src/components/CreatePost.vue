@@ -60,9 +60,7 @@ import { postService } from '../services/PostsService.js';
 import Pop from '../utils/Pop.js';
 
 export default {
-  props: {
-    account: { type: Account, required: true },
-  },
+
 
   setup(props) {
     const editable = ref({});
