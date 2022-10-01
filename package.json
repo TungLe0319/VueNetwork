@@ -26,6 +26,7 @@
     "eslint": "8.24.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-vue": "9.5.1",
+    "naive-ui": "^2.33.3",
     "sass": "^1.54.5",
     "vite": "3.1.3"
   }

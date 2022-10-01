@@ -1,14 +1,11 @@
 <template>
   <div class="container-fluid">
     <div class="row" >
-       <div class="con-example-images">
-    <!-- <vs-images>
-      <vs-image  :src="p.picture" v-for="(p) in profiles" />
-   
-    </vs-images> -->
+       <div class="col-12">
+ 
   </div>
-      <div class="col-md-6" v-for="p in profiles" :key="p">
-        <ProfileDetail :profile="p" />
+      <div class="col-md-3" v-for="x in profiles" :key="x">
+        <ProfileCards :profile="x" />
       </div>
     </div>
     <div class="row scrollMe justify-content-center">
@@ -58,6 +55,9 @@ import CreatePost from '../components/CreatePost.vue';
 import SearchForm from '../components/SearchForm.vue';
 import ProfileCards from '../components/ProfileCards.vue';
 import ProfileDetail from "../components/ProfileDetail.vue";
+import NaiveTest from "../components/NaiveTest.vue";
+import ProfileCards1 from "../components/ProfileCards.vue";
+
 
 export default {
   setup() {
@@ -79,6 +79,7 @@ export default {
       lastPage: computed(() => AppState.lastPage),
       profiles: computed(() => AppState.profiles),
       account: computed(() => AppState.account),
+      
       async changePage(pageUrl) {
         try {
           await postService.getPosts(pageUrl);
@@ -100,7 +101,7 @@ export default {
       },
     };
   },
-  components: { PostCard, CreatePost, SearchForm, ProfileCards, ProfileDetail },
+  components: { PostCard, CreatePost, SearchForm, ProfileCards, ProfileDetail, NaiveTest, ProfileCards1 },
 };
 </script>
 
@@ -110,3 +111,11 @@ export default {
   overflow: auto;
 }
 </style>
+ // import { defineComponent } from 'vue'
+    //  import { NButton , NCard, NCarousel ,N} from 'naive-ui'
+   
+    //  export default defineComponent({
+    //    components: {
+    //      NButton, NCard, NCarousel
+    //    }
+    //  })

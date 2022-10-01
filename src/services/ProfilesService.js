@@ -16,13 +16,13 @@ class ProfilesService {
       
       },
     });
-    console.log(res.data);
-    console.log(term);
+   
     (AppState.profiles = res.data.map((p) => new Account(p))),
       (AppState.page = res.data.page);
 
     AppState.lastPage = res.data.total_pages;
     AppState.term = term;
+    console.log('AppState.profiles:',AppState.profiles);
   }
 }
 

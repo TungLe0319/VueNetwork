@@ -1,15 +1,12 @@
 <template>
  
-    <div class="">
+    <div class="" >
 
-      <img :src="profile.picture" alt="" class="forcedImg rounded m-1 elevation-4">
+        <img :src="profile.picture" alt="" class="forcedImg rounded m-1 elevation-4">
 
-       <!-- <router-link :to="{ name: 'Profile', params: { id: profile.id } }">
-      <img
-        :src="profile.picture"
-        class="accountPicture elevation-4 mt-2 rounded-circle forcedImg"
-      />
-    </router-link> -->
+
+
+        
     </div>
     
  
