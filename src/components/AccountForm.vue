@@ -1,168 +1,167 @@
 <template>
+  <!-- Modal -->
+  <div
+    class="modal"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content bg-dark">
+        <div class="modal-body FORM">
+          <!-- -------------------SECTION FORM----------------------------------- -->
+          <form @submit.prevent="handleSubmit" class="">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="inputBox mt-2">
+                
+                  <input
+                    type="text"
+                    v-model="editable.name"
+                    placeholder="name"
+                    class=""
+                  />
+                  <span>ProfileName</span>
+                </div>
+                <div class="inputBox my-4">
+                 
+                  <input
+                    type="text"
+                    v-model="editable.email"
+                    placeholder="name"
+                    class=""
+                  />
+                  <span>email</span>
+                </div>
 
-<!-- Modal -->
-<div class="modal  " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content bg-dark">
-   
-      <div class="modal-body FORM ">
-        <!-- -------------------SECTION FORM----------------------------------- -->
-     <form @submit.prevent="handleSubmit" class="">
-<div class="row">
-<div class="col-md-6">
-    <div class="form-group mt-1">
-           <label for="name">Name</label>
-           <input
-             type="text"
-           v-model="editable.name"
-             placeholder="name"
-           
-             class="form-control mt-2"
-           />
-         </div>
-      <div class="form-group mt-2">
-           <label for="email">Email</label>
-           <input
-             type="text"
-           v-model="editable.email"
-             placeholder="name"
-           
-             class="form-control mt-2"
-           />
-         </div>
+                <div class="inputBox mt-2">
+                
+                  <input
+                    type="url"
+                    v-model="editable.picture"
+                    placeholder="url..."
+                    class=""
+                  />
+                  <span>profile picture</span>
+                </div>
 
-      <div class="form-group mt-2">
-        <label for="picture">Picture</label>
-        <input
-          type="url"
-          v-model="editable.picture"
-          placeholder="url..."
-          class="form-control mt-2"
-        />
-      </div>
+              </div>
 
-    <div class="form-group d-flex align-items-center">
-  
-        <label class="form-check-label mt-2 me-3" for="graduated">
-          <vs-tooltip text="Graduated" position="bottom" color="primary">
+              <div class="col-md-6">
+                <img
+                  :src="account.picture"
+                  alt=""
+                  class="img-fluid forcedImg Img1"
+                />
+              </div>
 
-            <i class="mdi mdi-school fs-2"></i> 
-          </vs-tooltip>
-        </label>
+              <div class="col-md-6">
+                
+                <div class="form-group d-flex align-items-center">
+                  <label class="form-check-label mt-2 me-3" for="graduated">
+                    <vs-tooltip
+                      text="Graduated"
+                      position="bottom"
+                      color="primary"
+                    >
+                      <i class="mdi mdi-school fs-2"></i>
+                    </vs-tooltip>
+                  </label>
 
-   
-      <div>
+                  <div class="checkBoxInput">
+                    <input
+                      class="form-check-input checkbox"
+                      type="checkbox"
+                      name="graduated"
+                      v-model="editable.graduated"
+                    />
+                  </div>
+                </div>
+                <div class="inputBox mt-2">
+               
+                  <input
+                    type="text"
+                    v-model="editable.class"
+                    placeholder="Class of..."
+                    class=""
+                    min="0"
+                  />
+                  <span>Class</span>
+                </div>
+                <div class="inputBox mt-2">
+                 
+                  <input
+                    type="text"
+                    v-model="editable.github"
+                    placeholder="url..."
+                    class=" "
+                    min="0"
+                  />
+                        <span>github</span>
+                </div>
+                <div class=" inputBox mt-2">
+               
+                  <input
+                    type="text"
+                    v-model="editable.linkedIn"
+                   
+                    class=" mt-2"
+                    min="0"
+                  />
+                      <span>linkedin</span>
+                </div>
+                <div class="inputBox mt-2">
+                  
+                  <input
+                    type="text"
+                    v-model="editable.resume"
+                    class="mt-2"
+                    min="0"
+                  />
+                  <span>Resume</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div>
+                  <img
+                    :src="account.coverImg"
+                    alt=""
+                    class="forcedImg smallerImg mt-2 Img1"
+                  />
+                </div>
+                <div class="mt-3 inputBox">
+                  <input type="url" v-model="editable.coverImg" class=" " />
+                  <span>CoverImg</span>
+                </div>
+              
+              </div>
+            </div>
 
+            <div class="inputBox2 mt-2">
+             
+              <textarea
+                v-model="editable.bio"
+                placeholder="bio."
+                class=" mt-2"
+                rows="4"
+              ></textarea>
+              <span>Bio</span>
+            </div>
 
-        <input class="form-check-input checkbox"  type="checkbox" name="graduated" v-model="editable.graduated"  >
-      </div>
+            <div class="my-3">
+              <button class="btn btn-success selectable" type="submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
 
-      
-</div>
-       <div class="form-group mt-2">
-        <label for="resume">Class</label>
-        <input
-          type="text"
-          v-model="editable.class"
-          placeholder="Class of..."
-          
-          class="form-control  mt-2"
-          min="0"
-        />
-      </div>
-      
-
-
-</div>
-
-<div class="col-md-6">
-  <img :src="account.picture" alt="" class="img-fluid forcedImg">
-</div>
-
-<div class="col-md-6">
-
-      <div class="form-group mt-2">
-        <label for="github">Github</label>
-        <input
-          type="text"
-          v-model="editable.github"
-          placeholder="url..."
-          
-          class="form-control mt-2"
-          min="0"
-        />
-      </div>
-      <div class="form-group mt-2">
-        <label for="linkedIn">LinkedIn</label>
-        <input
-          type="text"
-          v-model="editable.linkedIn"
-          placeholder="linkedIn url..."
-          
-          class="form-control mt-2"
-          min="0"
-        />
-      </div>
-      <div class="form-group mt-2">
-        <label for="resume">Resume</label>
-        <input
-          type="text"
-          v-model="editable.resume"
-          placeholder="Resume url..."
-          
-          class="form-control  mt-2"
-          min="0"
-        />
-      </div>
-   
-  
-</div>
-<div class="col-md-6">
-  <div>
-    <img :src="account.coverImg" alt="" class="forcedImg smallerImg mt-2">
-  </div>
-  <div class="form-group mt-2">
-        <label for="coverImg">CoverImage</label>
-        <input
-          type="url"
-          v-model="editable.coverImg"
-          placeholder="Image url..."
-          
-          class="form-control mt-2"
-       
-        />
-      </div>
-
-
-</div>
-</div>
-
-  
-
-
-
-      <div class="form-group mt-2">
-        <label class="" for="bio">Bio:</label>
-        <textarea
-          v-model="editable.bio"
-          placeholder="bio."
-          class="form-control mt-2"
-          rows="4"
-        ></textarea>
-      </div>
-
-      <div class="my-3 ">
-        <button class="btn btn-success selectable" type="submit">Submit</button>
-      </div>
-    </form>
-      </div>
-    
         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-      
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -196,30 +195,149 @@ export default {
 </script>
 
 <style scoped>
-.forcedImg{
-border-radius: 4px;
-border: dashed 4px rgb(146, 197, 245);
+.forcedImg {
+  border-radius: 4px;
+  border: dashed 4px rgb(146, 197, 245);
 }
-.checkbox{
+.checkbox {
   width: 30px;
   height: 30px;
 }
 
-.smallerImg{
+.smallerImg {
   height: 200px;
   width: 375px;
   object-fit: cover;
 }
 
-.form-Banner{
+.form-Banner {
   background-image: url(https://i.pinimg.com/564x/ca/db/46/cadb46a6ac190342d8152d4240952333.jpg);
-background-position: center;
-background-size: cover;
-
+  background-position: center;
+  background-size: cover;
 }
 
+.Img1 {
+  transition: all 0.5s ease;
+}
+.Img1:hover {
+  transform: scale(1.01);
+  transition: all 0.4s ease;
+  filter: brightness(110%);
+}
+
+.checkBoxInput input{
+    color: #27132a;
+ background-color: #27132a;
+  padding: 0 10px;
+  font-size: 0.65em;
+
+border: 1px solid #92c5f5 ;
 
 
+  letter-spacing: 0.2em;
+  transition: all 1s ease;
+}
+.inputBox {
+  position: relative;
+  width: 250px;
+}
+/* ------------------------------------------------------------------------------------ */
+.inputBox2 {
+  position: relative;
+  width: auto;
+  
+}
+.inputBox2 textarea {
+  width: 100%;
+ 
+  text-align: right;
+  padding: 10px;
+  border: 1px solid #92c5f5;
+  border-bottom: 3px solid #c4def7;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+  font-size: 1em;
+  background-color: transparent;
+  transition: all 1.5s ease;
+  box-shadow:  0.25px 0.25px 10px rgba(243, 236, 236, 0.308);
+}
+.inputBox2 span {
+  position: absolute;
+  left: 0;
+  bottom: 3em;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  text-transform: uppercase;
+  color: #f1ecf180;
+  transition: all 1s ease;
+}
+.inputBox2 textarea:valid ~ span,
+.inputBox2 textarea:focus ~ span {
+  color: #27132a;
+  transform: translateX(10px) translateY(-70px);
+  padding: 0 10px;
+  font-size: 1em;
+border-radius: 4px;
+  font-weight: bold;
+   background: #92c5f5;
+  border-left: 1px solid #92c5f5;
+  border-right: 1px solid #92c5f5;
+  letter-spacing: 0.2em;
+  transition: all 1s ease;
+}
 
+/* ---------------------------------------------------------------------------- */
+.inputBox input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #92c5f5;
+  border-bottom: 3px solid #c4def7;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+  font-size: 1em;
+  background-color: transparent;
+  transition: all 1.5s ease;
+  box-shadow:  0.25px 0.25px 10px rgba(243, 236, 236, 0.308);
+}
+.inputBox span {
+  position: absolute;
+  left: 0;
+  bottom: 3em;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  text-transform: uppercase;
+  color: #f1ecf180;
+  transition: all 1s ease;
+}
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span {
+  color: #27132a;
+  transform: translateX(10px) translateY(-7px);
+  padding: 0 10px;
+  font-size: 0.65em;
+border-radius: 4px;
+  font-weight: bold;
+   background: #92c5f5;
+  border-left: 1px solid #92c5f5;
+  border-right: 1px solid #92c5f5;
+  letter-spacing: 0.2em;
+  transition: all 1s ease;
+}
 
+/* .inputBox:nth-child(2) input:valid ~ span,
+.inputBox:nth-child(2) input:focus ~ span {
+  background: #92c5f5;
+  color: #27132a;
+  border-radius: 2px;
+} */
+.modal-body {
+  background-image: url(https://www.pixelstalk.net/wp-content/uploads/images6/21-9-HD-Wallpaper-Free-download.jpg);
+  background-size: cover;
+  background-position: center;
+   box-shadow:  1px 1px 10px rgba(243, 236, 236, 0.308);
+}
 </style>

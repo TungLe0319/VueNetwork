@@ -55,12 +55,13 @@
         <div>
           <p>{{ profile.bio }}</p>
         </div>
-        <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end" v-if="account" >
           <vs-tooltip text="Edit Account" position="left" color="primary">
             <i
               class="mdi mdi-account-edit fs-1 btn text-light"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
+          
             ></i>
           </vs-tooltip>
         </div>
@@ -88,8 +89,10 @@
     this.graduated=data.graduated
     this.subs=data.subs //array -->
 <script>
+import { computed } from "@vue/reactivity";
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { AppState } from "../AppState.js";
 import { Account } from '../models/Account.js';
 import Pop from '../utils/Pop.js';
 import CreatePost from './CreatePost.vue';
@@ -99,7 +102,9 @@ export default {
     profile: { type: Account, required: true },
   },
   setup(props) {
-    return {};
+    return {
+      account: computed(()=> AppState.account)
+    };
   },
   components: { CreatePost },
 };
