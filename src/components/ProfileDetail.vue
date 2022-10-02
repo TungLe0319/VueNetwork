@@ -55,7 +55,7 @@
         <div>
           <p>{{ profile.bio }}</p>
         </div>
-        <div class="d-flex justify-content-end" v-if="account" >
+        <div class=" " v-if="account" >
           <vs-tooltip text="Edit Account" position="left" color="primary">
             <i
               class="mdi mdi-account-edit fs-1 btn text-light"
