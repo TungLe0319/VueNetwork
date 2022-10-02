@@ -1,8 +1,8 @@
 <template>
  
  
-    <div class="card bg-dark p-2"  v-for="p in profiles">
-<PostCreator   :creator="p" />
+    <div   v-for="p in profiles">
+<CreatorIcons  :creator="p" />
     </div>
 
 
@@ -13,6 +13,7 @@ import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState.js";
 import { Account } from '../models/Account.js';
 import PostCreator from "./PostCreator.vue";
+import CreatorIcons from "./creatorIcons.vue";
 
 export default {
     setup(props) {
@@ -20,7 +21,7 @@ export default {
             profiles: computed(() => AppState.profiles)
         };
     },
-    components: { PostCreator }
+    components: { PostCreator, CreatorIcons }
 };
 </script>
 

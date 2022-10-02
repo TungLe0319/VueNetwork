@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg bg-warning menu-bar px-3 elevation-4 ">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div class="d-flex align-items-center">
-        <img src="https://cdn-icons-png.flaticon.com/512/2115/2115955.png" alt="" width="50" height="50">
+        <img src="https://cdn-icons-png.flaticon.com/512/2163/2163350.png" alt="" width="50" height="50" class="homeButton">
      
       </div>
     </router-link>
@@ -75,5 +75,16 @@ a:hover {
   letter-spacing: 0.08rem
   
   /* Second Color  in text-shadow is the blur */
+}
+
+.homeButton:hover{
+  filter: sepia(50%);
+  transition: all 0.5s ease;
+
+}
+.homeButton{
+ 
+  transition: all 0.5s ease;
+
 }
 </style>

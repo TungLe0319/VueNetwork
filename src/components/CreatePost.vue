@@ -22,14 +22,15 @@
 
       <div class="postComment">
         <form @submit.prevent="handleSubmit">
-          <div class="form-group mb-2">
-            <label for="bio"></label>
+          <div class="inputBox mb-2">
+           
             <textarea
               v-model="editable.body"
               placeholder="Share whats happening"
               class="form-control"
               rows="4"
               required
+         
             ></textarea>
           </div>
           <div class="form-group d-flex" >
@@ -43,6 +44,7 @@
               placeholder="Image url..."
               class="form-control"
               min="0"
+           
             />
           </div>
 
@@ -85,6 +87,7 @@ export default {
           
           await postService.createPost(editable.value);
           Pop.toast('Posted Successfully','success','center-end',1000,true)
+          editable.value = {}
         } catch (error) {
           Pop.error(error, ['']);
         }
@@ -130,5 +133,45 @@ export default {
   border: 4px dashed #0c1b60;
   transform: scale(1.02);
   transition: all .3s ease;
+}
+
+
+.inputBox input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #92c5f5;
+  border-bottom: 3px solid #c4def7;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+  font-size: 1em;
+  background-color: transparent;
+  transition: all 1.5s ease;
+  box-shadow:  0.25px 0.25px 10px rgba(243, 236, 236, 0.308);
+}
+.inputBox span {
+  position: absolute;
+  left: 0;
+  bottom: 3em;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  text-transform: uppercase;
+  color: #f1ecf180;
+  transition: all 1s ease;
+}
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span {
+  color: #27132a;
+  transform: translateX(10px) translateY(-7px);
+  padding: 0 10px;
+  font-size: 0.65em;
+border-radius: 4px;
+  font-weight: bold;
+   background: #92c5f5;
+  border-left: 1px solid #92c5f5;
+  border-right: 1px solid #92c5f5;
+  letter-spacing: 0.2em;
+  transition: all 1s ease;
 }
 </style>

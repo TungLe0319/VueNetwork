@@ -54,7 +54,7 @@
               class="mdi mdi-thumb-up"
             ></i>
           </div>
-          <div v-else-if="post.thumbUp==false">
+          <div v-else>
   <p>{{ post.likeIds.length }}</p>
             <i
               :disabled="!user.isAuthenticated"
@@ -73,17 +73,10 @@
           ></i>
         </div>
         <!-- -==---------=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
-        <i @click="toggleLike()" class="mdi mdi-thumb-up" id="Testing1"></i>
+     
         <div>
           <p class="timeText">
-            <!-- {{
-              new Date(post.createdAt).toLocaleString('en-Us', {
-                hour: 'numeric',
-                day: '2-digit',
-                weekday: 'short',
-              })
-            }} -->
-
+         
             {{testTime }}
           </p>
         </div>

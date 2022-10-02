@@ -15,6 +15,7 @@
 
 <script>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { postService } from "../services/PostsService.js";
 import Pop from "../utils/Pop.js";
 
@@ -24,12 +25,13 @@ export default {
   },
 
   setup(props) {
+    const route = useRouter()
 const editable = ref({})
     return {
 editable,
 async handleSubmit(){
   try {
-  
+  await route.push({name:'SearchResults'})
       await postService.getPostsBySearchTerm(editable.value.term)
     } catch (error) {
     Pop.error(error,[''])

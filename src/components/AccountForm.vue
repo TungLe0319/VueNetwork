@@ -104,7 +104,7 @@
                
                   <input
                     type="text"
-                    v-model="editable.linkedIn"
+                    v-model="editable.linkedin"
                    
                     class=" mt-2"
                     min="0"

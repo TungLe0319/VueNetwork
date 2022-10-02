@@ -5,16 +5,18 @@
       :style="{ backgroundImage: `url(${profile.coverImg})` }"
     >
       <div class="d-flex justify-content-between align-items-center">
-        <div class="m-2">
+        <div class="m-2 position-relative">
           <img
             :src="profile.picture"
             alt=""
             class="rounded-circle forcedImg border border-3 border-warning"
           />
+
+          <span v-if="profile.graduated" class=" schoolIcon"><i class="mdi mdi-school fs-1 text-shadow " ></i></span>
         </div>
         <div class="me-3 text-shadow d-flex flex-column">
           <span>
-            <a :href="profile.github" class="text-light">
+            <a :href="profile.github" class="text-light" :disabled="profile.github" target="_blank">
               <vs-tooltip text="github" position="left" color="primary">
                 <i
                   :class="profile.github ? '' : 'text-dark opacity-50 disabled'"
@@ -25,21 +27,22 @@
             </a>
           </span>
           <span>
-            <a :href="profile.github" class="text-light">
+            <a :href="profile.linkedin" class="text-light" :disabled="profile.linkedin" target="_blank">
 
               <vs-tooltip text="LinkedIn" position="left" color="primary">
 
                 <i
-                  :class="profile.linkedIn ? '' : 'text-dark opacity-50 disabled'"
+                  :class="profile.linkedin ? '' : 'text-dark opacity-50 '"
                   class="mdi mdi-linkedin fs-2"
                 ></i>
               </vs-tooltip>
             </a>
           </span>
           <span>
-            <a :href="profile.github" class="text-light">
+            <a :href="profile.resume" class="text-light" :disabled="profile.resume" target="_blank">
               <vs-tooltip text="resume" position="left" color="primary">
                  <i
+
                 :class="profile.resume ? '' : 'text-dark opacity-50 disabled'"
                 class="mdi mdi-text-box fs-2"
               ></i>
@@ -55,7 +58,7 @@
         <div>
           <p>{{ profile.bio }}</p>
         </div>
-        <div class=" " v-if="account" >
+        <div class=" " v-if="account.id == profile.id " >
           <vs-tooltip text="Edit Account" position="left" color="primary">
             <i
               class="mdi mdi-account-edit fs-1 btn text-light"
@@ -64,6 +67,10 @@
           
             ></i>
           </vs-tooltip>
+        </div>
+        <div v-else>
+
+
         </div>
       </div>
     </div>
@@ -102,7 +109,9 @@ export default {
     profile: { type: Account, required: true },
   },
   setup(props) {
+    const route = useRoute()
     return {
+      route,
       account: computed(()=> AppState.account)
     };
   },
@@ -124,8 +133,14 @@ export default {
   object-fit: cover;
 }
 
+.schoolIcon{
+  position: absolute;
+  top: -0.75rem;
+  left: -0.5rem;
+}
+
 .cover-img {
-  height: 50vh;
+  height: 70vh;
   width: 100%;
   background-attachment: fixed;
   background-position: center;

@@ -15,9 +15,12 @@
     >
   </div>
   <!-- -------------- -->
-  <div>
-    <PostCard v-for="p in posts" :post="p" :key="p.id" />
+  <div class="row">
+    <div class=" col-md-4 " v-for="p in posts" :key="p.id" >
+    <PostCard :post="p"  />
   </div>
+  </div>
+  
 </template>
 
 <script>
@@ -31,6 +34,7 @@ import PostCard from '../components/PostCard.vue';
 import CreatePost from '../components/CreatePost.vue';
 import { postService } from '../services/PostsService.js';
 import Pop from '../utils/Pop.js';
+
 export default {
   setup(props) {
     const route = useRoute();
@@ -94,4 +98,18 @@ export default {
   width: 65.9vw;
 
 }
+
+.scrollme{
+  height: 100vh;
+  overflow: auto;
+}
 </style>
+ import { defineComponent } from 'vue'
+  import { NButton , NCard, NCarousel ,N} from 'naive-ui'
+
+
+  // note to use this in a template you just need to
+  // npm i -D naive-ui  
+  // they look like <n-button></n-button>
+//to use the ones you want go into import and 
+//type N and you will see a list of option
