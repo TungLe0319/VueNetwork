@@ -51,9 +51,15 @@ class PostsService {
   async likePost(id) {
 
     const res = await api.post(`/api/posts/${id}/like`);
-    console.log(res.data);
+    // console.log(res.data);
     let post = AppState.posts.findIndex((p) => p.id == id);
+    let post1 = AppState.posts.find(p => p.id ==id)
+    // console.log(post1);
+    console.log(post1);
     AppState.posts.splice(post, 1, new Post(res.data));
+    post1.thumbUp = !post1.thumbUp
+
+console.log(post1);
   //   AppState.likesAccounts = res.data.likes.map(l => new Account(l))
   //  console.log(AppState.likesAccounts,'testintg');
   //  let myLike = AppState.likesAccounts.find(i => i.id == AppState.account.id)
@@ -61,19 +67,22 @@ class PostsService {
    
   //  console.log(AppState.myLike,'test23');
 
-  AppState.likesAccounts = res.data.likes
-    let myLike = AppState.likesAccounts.find((i) => i.id == AppState.account.id);
-   AppState.myLike = new Account(myLike);
-   console.log(AppState.myLike);
-
+  // AppState.likesAccounts = res.data.likes
+  //   let myLike = AppState.likesAccounts.find((i) => i.id == AppState.account.id);
+  //  AppState.myLike = new Account(myLike);
+  //  console.log(AppState.myLike);
 
 
   }
 
-  async findMyLike(id){
-   let myLike = AppState.likesAccounts.find(i => i.id == id)
-   AppState.myLike = new Account(myLike)
-   console.log(AppState.myLike);
+  async toggleLike(){
+    
+AppState.posts.forEach(p => {
+  if (p.likes.id == AppState.account.id) {
+    p.thumbsUp = true
+    console.log(p);
+  }
+})
   }
 }
 export const postService = new PostsService();

@@ -12,7 +12,7 @@
 
   <div class="d-flex align-items-center mt-4">
     <h6 class="text-primary">{{ creator.name }}</h6>
-    <span v-if="creator.graduated"> <i class="mdi mdi-school fs-2"></i> </span>
+    <span v-if="creator.graduated"> <i class="mdi mdi-school fs-5"></i> </span>
   </div>
 </template>
 
@@ -39,9 +39,14 @@ export default {
   /* Second Color  in text-shadow is the blur */
 }
 .forcedImg {
-  height: 50px;
-  width: 50px;
+  height: 80px;
+  width: 80px;
   object-fit: cover;
+}
+
+.forcedImg:hover{
+  filter: brightness(120%);
+  box-shadow: 4px 2px 10px red;
 }
 
 h6{

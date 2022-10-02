@@ -1,18 +1,11 @@
 <template>
-  <div class="">
  
-    <div  >
+ 
+    <div class="">
 <PostCreator   v-for="p in profiles" :creator="p" />
     </div>
 
 
-      <!-- <img
-        :src="profile.picture"
-        alt=""
-        class="forcedImg rounded m-1 elevation-4"
-      /> -->
-
-  </div>
 </template>
 
 <script>

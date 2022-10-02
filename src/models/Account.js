@@ -17,5 +17,7 @@ export class Account {
     this.class=data.class
     this.graduated=data.graduated
     this.subs=data.subs //array
+
+
   }
 }

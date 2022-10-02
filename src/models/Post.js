@@ -10,6 +10,7 @@ this.imgUrl = data.imgUrl
 this.creator =  new Account(data.creator)
 this.likeIds= data.likeIds //array as res.data
 this.createdAt = data.createdAt
+    this.thumbUp = data.thumbUp || false;
   }
 
  

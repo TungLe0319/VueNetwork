@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12"></div>
-      <div class="col-md-3" >
+     
+      <div class="col-md-2" >
         <ProfileCards  />
       </div>
     </div>
@@ -17,11 +17,11 @@
         <div class="col-md-6">
           <SearchForm />
         </div>
-        <div class="col-md-12 d-flex justify-content-center">
-          <div class="d-flex justify-content-center mt-2">
+        <div class="col-md-12 d-flex justify-content-center ">
+          <div class="d-flex justify-content-center mt-2 ">
             <vs-tooltip color="primary" text="PreviousPage" position="left">
               <vs-button
-                class="me-2 p-0"
+                class="me-2 p-0  "
                 @click="changePage(previousPage)"
                 type="gradient"
                 ><i class="mdi mdi-arrow-left fs-2"></i
@@ -144,6 +144,8 @@ export default {
   max-height: 100vh;
   overflow: auto;
 }
+
+
 </style>
 // import { defineComponent } from 'vue' // import { NButton , NCard, NCarousel
 ,N} from 'naive-ui' // export default defineComponent({ // components: { //
