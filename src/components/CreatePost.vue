@@ -1,6 +1,7 @@
 <template>
   <div class="bg-light p-2 elevation-3 mx-4 my-2 customBorder">
     <div class="d-flex justify-content-around ms-4">
+      
       <div class="me-2 mt-4" v-if="acc.picture">
 
 

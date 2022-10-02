@@ -75,14 +75,16 @@
         <!-- -==---------=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- -->
         <i @click="toggleLike()" class="mdi mdi-thumb-up" id="Testing1"></i>
         <div>
-          <p class="text-shadow">
-            {{
+          <p class="timeText">
+            <!-- {{
               new Date(post.createdAt).toLocaleString('en-Us', {
                 hour: 'numeric',
                 day: '2-digit',
                 weekday: 'short',
               })
-            }}
+            }} -->
+
+            {{testTime }}
           </p>
         </div>
       </div>
@@ -91,6 +93,7 @@
 </template>
 
 <script>
+  import { format, render, cancel, register } from 'timeago.js';
 import { computed } from '@vue/reactivity';
 
 import { AppState } from '../AppState.js';
@@ -100,12 +103,17 @@ import { postService } from '../services/PostsService.js';
 import Pop from '../utils/Pop.js';
 import PostCreator from './PostCreator.vue';
 
+
 export default {
   props: {
     post: { type: Post, required: true },
   },
   setup(props) {
+let time = format(Date.now())
+  let testTime = format(props.post.createdAt)
     return {
+      time,
+      testTime,
       account: computed(() => AppState.account),
       user: computed(() => AppState.user),
       myLike: computed(() => AppState.myLike),
@@ -133,6 +141,8 @@ export default {
         postService.toggleLike(props.post.id);
    
       },
+
+    
     };
   },
   components: { PostCreator },
@@ -207,7 +217,10 @@ p {
  
 }
 
-
+.timeText{
+  font-weight: 1000;
+  letter-spacing: 0.04em;
+}
 // .borderimg3 {
 //   border: 10px solid transparent;
 //   padding: 15px;

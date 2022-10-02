@@ -92,7 +92,9 @@
 </a>  
 
       </div>
-   
+   <div>
+
+   </div>
     </div>
   </span>
 </template>
@@ -112,6 +114,7 @@
     this.graduated=data.graduated
     this.subs=data.subs //array -->
 <script>
+  
 import { computed } from 'vue';
 import { AppState } from '../AppState';
 import { AuthService } from '../services/AuthService';
