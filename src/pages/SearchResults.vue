@@ -1,10 +1,13 @@
 <template>
   <div class="container-fluid">
     <div class="row justify-content-center ">
-    
+    <div class="col-md-12">
+      <SearchForm />
+    </div>
    
         <!-- <ProfileCards  /> -->
-            <div  class="text-center col-md-3"  v-for="p in profiles">
+            <div  class="text-center col-md-1 m-2"  v-for="p in profiles">
+             
              <vs-tooltip :text="p.name">
 
                <CreatorIcons  :creator="p" />
@@ -13,6 +16,17 @@
           
  
 
+      </div>
+    <div class="border border-bottom border-3 border-dark rounded my-2">
+      
+    </div>
+        <div class="col-md-6" v-for="p in posts" :key="p">
+        <PostCard
+          :post="p"
+          :creator="p.creator"
+          @deletePost="deletePost(p.id)"
+        />
+     
       </div>
     </div>
    
@@ -40,15 +54,15 @@ export default {
   
   setup() {
     // const route = useRouter()
-    async function getPosts() {
-      try {
-        await postService.getPosts();
-      } catch (error) {
-        Pop.error(error, ['getPosts']);
-      }
-    }
+    // async function getPosts() {
+    //   try {
+    //     await postService.getPosts();
+    //   } catch (error) {
+    //     Pop.error(error, ['getPosts']);
+    //   }
+    // }
     onMounted(() => {
-      getPosts();
+   
     });
     return {
       nextPage: computed(() => AppState.nextPage),

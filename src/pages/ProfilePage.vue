@@ -6,13 +6,19 @@
   </div>
   <!-- ------------- -->
   <div class="d-flex justify-content-center mt-2">
-    <vs-button class="me-2" :disabled="!previousPage" @click="changePage(previousPage)" type="gradient"
-      >Previous</vs-button
-    >
+<vs-tooltip  text="Next Page" color="primary" position="left">
+  <vs-button class="me-2" v-if="previousPage" :disabled="!previousPage" @click="changePage(previousPage)" type="gradient"
+    >Previous</vs-button
+  >
 
-    <vs-button :disabled="!nextPage" @click="changePage(nextPage)" color="warning" type="gradient"
-      >warning</vs-button
-    >
+</vs-tooltip>
+
+<vs-tooltip text="Next Page" color="warning" position="right">
+
+  <vs-button :disabled="!nextPage" @click="changePage(nextPage)" color="warning" type="gradient"
+    >Next</vs-button
+  >
+</vs-tooltip>
   </div>
   <!-- -------------- -->
   <div class="row">

@@ -1,20 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="row justify-content-center ">
-    
    
-        <!-- <ProfileCards  /> -->
-            <div  class="col-md-1 my-2 "  v-for="p in profiles">
-             <vs-tooltip :text="p.name">
-
-               <CreatorIcons  :creator="p" />
-
-             </vs-tooltip>
-          
- 
-
-      </div>
-    </div>
     <div class="row scrollMe justify-content-center">
       <div class="col-md-8" v-if="user.isAuthenticated">
         <CreatePost />
@@ -23,13 +9,14 @@
         class="row justify-content-center"
         :class="user.isAuthenticated ? '' : 'mt-2'"
       >
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <SearchForm />
-        </div>
-        <div class="col-md-12 d-flex justify-content-center ">
+        </div> -->
+        <div class="col-md-12 d-flex justify-content-center position-relative ">
           <div class="d-flex justify-content-center mt-2 ">
             <vs-tooltip color="primary" text="PreviousPage" position="left">
               <vs-button
+              v-if="previousPage"
                 class="me-2 p-0  "
                 @click="changePage(previousPage)"
                 type="gradient"
@@ -45,7 +32,9 @@
                 ><i class="mdi mdi-arrow-right fs-2"></i
               ></vs-button>
             </vs-tooltip>
+           
           </div>
+            
         </div>
       </div>
       <div class="col-md-8" v-for="p in posts" :key="p">
@@ -77,11 +66,10 @@
               ><i class="mdi mdi-arrow-right fs-2"></i
             ></vs-button>
           </vs-tooltip>
-          <div>
-            <button class="btn p-4"></button>
-          </div>
+          
         </div>
       </div>
+  
     </div>
   </div>
 </template>
@@ -131,8 +119,8 @@ export default {
         
           await postService.getPosts(pageUrl);
           let test1 = pageUrl.slice(-1)
-          Pop.toast(` Page:${test1}`,``,"bottom-end")
-          Pop.customTung()
+          Pop.toast(` Page: ${test1} of `,``,"bottom-end")
+
         } catch (error) {
           Pop.error(error.message);
         }
@@ -174,6 +162,7 @@ export default {
  height: 100px;
   overflow-x: auto;
 }
+
 
 </style>
 // import { defineComponent } from 'vue' // import { NButton , NCard, NCarousel

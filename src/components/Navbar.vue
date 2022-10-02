@@ -1,12 +1,20 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-warning menu-bar px-3 elevation-4 ">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex align-items-center">
-        <img src="https://cdn-icons-png.flaticon.com/512/2163/2163350.png" alt="" width="50" height="50" class="homeButton">
-     
-      </div>
-    </router-link>
-    <button
+  <nav class="navbar navbar-expand-lg bg-warning menu-bar px-3 elevation-4 justify-content-between">
+    <div class="d-flex ">
+
+   <vs-tooltip text="Home " position="right" color="warning">
+
+     <vs-button color="warning" type="gradient" class="homeButton" :to="{ name: 'Home' }"> <img src="https://cdn-icons-png.flaticon.com/512/2163/2163350.png" alt="" width="50" height="50" class="" ></vs-button>
+   </vs-tooltip>
+        
+   
+  
+   
+      
+    </div>
+
+<!-- -------------------------------- -->
+ <button
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
@@ -15,21 +23,33 @@
       aria-expanded="false"
       aria-label="Toggle navigation"
     >
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon" />
     </button>
-    <div>
-      
-    </div>
-    <div class="collapse navbar-collapse" id="navbarText">
+    <div class="collapse  navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
-        <li>
-       <search-profiles/>
+       
+        <li class="d-md-none ">
+          <Login />
+
         </li>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
-      <!-- <Login />
-      //TODO search bar here -->
     </div>
+<!-- -------------------------------- -->
+<div>
+  <img src="https://i.giphy.com/media/bGgsc5mWoryfgKBx1u/giphy.webp" alt="Web-Logo" width="100" height="100">
+</div>
+<!-- -----------------------7 -->
+
+      <div>
+         <vs-tooltip text="Search Posts or Profiles" position="left" color="warning">
+
+           <vs-button color="warning" type="gradient" class="vs-buttonSearch " :to="({name:'SearchResults'})"><img src="https://cdn-icons-png.flaticon.com/512/200/200941.png" alt="" width="50" height="50"></vs-button>
+         </vs-tooltip>
+     
+    
+    </div>
+     
   </nav>
 </template>
 
@@ -80,11 +100,26 @@ a:hover {
 .homeButton:hover{
   filter: sepia(50%);
   transition: all 0.5s ease;
-
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .homeButton{
- 
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: all 0.5s ease;
+
+}
+
+.vs-buttonSearch{
+  padding-top: 0;
+  padding-bottom: 0;
+
+}
+.vs-buttonSearch:hover img{
+  padding-top: 0;
+  padding-bottom: 0;
+
+}
+
+.searchIcon{
 
 }
 </style>

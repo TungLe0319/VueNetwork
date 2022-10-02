@@ -53,8 +53,8 @@
         </div>
       </div>
       <div class="mx-3 mt-3 text-shadow">
-        <p class="">{{ profile.class }}</p>
-        <h5>{{ profile.name }}</h5>
+        <h1>{{ profile.name }}</h1>
+        <h5 class="class1">{{ profile.class }}</h5>
         <div>
           <p>{{ profile.bio }}</p>
         </div>
@@ -122,7 +122,7 @@ export default {
 <style lang="scss" scoped>
 .text-shadow {
   color: aliceblue;
-  text-shadow: 1px 1px black, 0px 0px 5px rgb(162, 217, 239);
+  text-shadow: 1px 1px black, 0px 0px 5px rgb(25, 28, 29);
   font-weight: bold;
   letter-spacing: 0.08rem;
   /* Second Color  in text-shadow is the blur */
@@ -148,5 +148,9 @@ export default {
 }
 .customBg {
   background-color: rgba(14, 1, 1, 0.219);
+}
+
+.class1{
+color: rgba(225, 232, 236, 0.925);
 }
 </style>

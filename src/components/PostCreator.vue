@@ -1,12 +1,17 @@
 <template>
-  <div class="mx-2" v-if="creator.picture">
+  <div class="mx-2" position="relative" v-if="creator.picture">
     <router-link :to="{ name: 'Profile', params: { id: creator.id } }">
       <img
         :src="creator.picture"
         class="accountPicture elevation-4 mt-2 rounded-circle forcedImg "
         :alt="creator.name"
+        @error="setAltImg"
       />
     </router-link>
+    <span class="graduated">
+
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732475.png" alt="" width="30 " height="30" class="text-shadow">
+    </span>
   </div>
   
 
@@ -16,7 +21,7 @@
        <router-link :to="{ name: 'Profile', params: { id: creator.id } }">
 
       
-        <h6 class="text-primary">{{ creator.name }}</h6>
+        <b class="text-dark creatorName">By {{ creator.name }}</b>
     </router-link>
     <span v-if="creator.graduated"> <i class="mdi mdi-school fs-5"></i> </span>
   </div>
@@ -31,15 +36,23 @@ export default {
   },
 
   setup(props) {
-    return {};
+
+
+
+    return {
+      setAltImg(event){
+  event.target.src='https://i.pinimg.com/564x/93/47/3d/93473d632d1e576ca274ceab098d58a8.jpg'
+ 
+}
+    };
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .text-shadow {
-  color: aliceblue;
-  text-shadow: 1px 1px black, 0px 0px 5px salmon;
+  color: rgb(0, 0, 0);
+  text-shadow: 1px 1px black, 0px 0px 5px rgb(165, 152, 150);
   font-weight: bold;
   letter-spacing: 0.08rem;
   /* Second Color  in text-shadow is the blur */
@@ -62,5 +75,16 @@ h6{
   font-size: large;
   font-weight: 800;
   
+}
+
+.creatorName{
+  font-weight: bold;
+  font-style: oblique;
+
+}
+.graduated{
+  position: absolute;
+  left: 35px;
+  top: 0;
 }
 </style>

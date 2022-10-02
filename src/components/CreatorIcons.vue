@@ -5,7 +5,8 @@
       <img
         :src="creator.picture"
         class="accountPicture elevation-4 mt-2 rounded-circle forcedImg "
-        :alt="creator.name"
+        alt="creator.name"
+       @error="setAltImg"
       />
     </router-link>
   </div>
@@ -21,7 +22,16 @@ export default {
   },
 
   setup(props) {
-    return {};
+
+    return {
+
+
+setAltImg(event){
+  event.target.src='https://i.giphy.com/media/L1R1tvI9svkIWwpVYr/giphy.webp'
+}
+//https://i.pinimg.com/564x/93/47/3d/93473d632d1e576ca274ceab098d58a8.jpg
+  //https://i.pinimg.com/736x/b3/1d/5f/b31d5f818bfacf883496487abe89ee50.jpg
+    };
   },
 };
 </script>

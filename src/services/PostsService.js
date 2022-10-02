@@ -20,10 +20,11 @@ class PostsService {
   }
   async getPosts(page) {
     const res = await postApi.get(page);
-    // console.log(res.data);
+    console.log(res.data.posts);
     AppState.posts = res.data.posts.map((p) => new Post(p));
     AppState.nextPage = res.data.older;
     AppState.previousPage = res.data.newer;
+    // AppState.likesAccounts = res.data
   }
 
   async getPostsByCreatorId(creatorId) {

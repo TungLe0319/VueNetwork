@@ -1,10 +1,10 @@
 <template>
-  <header>
+  <header class="">
     <Navbar />
   </header>
   <main class="container-fluid">
     <div class="row ">
-      <div class="col-md-2 bg-dark text-light sideNav rounded-end elevation-2 border border-secondary border-1 profile-Banner" >
+      <div class="col-md-2 bg-dark text-light sideNav rounded-end elevation-2 border border-secondary border-1 profile-Banner d-none d-md-block" >
         <div class="mt-3">
           <Login />
         </div>
@@ -17,9 +17,12 @@
       </div>
 
       <div class="col-md-2 d-none d-md-block ">
-        <span class="d-flex justify-content-center"> <h6 class="sponsor"> Sponsors: </h6> </span>
-        <div v-for="a in ads" class="d-flex  ms-5  ">
-          <Ads :ad="a" />
+        <span class="d-flex justify-content-center"> <h6 class="sponsor text-light text-shadow"> Sponsors: </h6> </span>
+        <div v-for="a in ads" class="d-flex  ms-5  ad-Banner ">
+          <vs-tooltip :title="a.title" text="You should click me" position="left" color="primary">
+
+            <Ads :ad="a" />
+          </vs-tooltip>
         </div>
       </div>
       
@@ -104,11 +107,9 @@ background-size: cover;
   transition: all 1.3s ease
 }
 
-.ad-Banner{
-  height: 80vh;
-}
 
 .modal1{
+  background-image: url(https://i.imgflip.com/6vhwc1.jpg);
   height: 80vh;
   background-position: center;
   background-size: cover;
@@ -123,6 +124,24 @@ background-size: cover;
   font-size:  large;
   font-weight: 700;
   margin-top: 0.5rem;
+
+}
+.ad-Banner:hover{
+  transform: translateX(-40px);
+transition: all 0.5s ease;
+}
+.ad-Banner{
+ 
+transition: all 0.5s ease;
+}
+
+
+.text-shadow{
+  color: aliceblue;
+  text-shadow: 1px 1px black, 0px 0px 5px rgb(58, 56, 55);
+  font-weight: bold;
+  letter-spacing: 0.08rem
+  
 
 }
 </style>
