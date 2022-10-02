@@ -1,8 +1,8 @@
 <template>
  
  
-    <div class="">
-<PostCreator   v-for="p in profiles" :creator="p" />
+    <div class="card bg-dark p-2"  v-for="p in profiles">
+<PostCreator   :creator="p" />
     </div>
 
 

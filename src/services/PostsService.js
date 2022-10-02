@@ -1,8 +1,8 @@
 import { AppState } from '../AppState.js';
 import { Post } from '../models/Post.js';
 import { api, postApi } from './AxiosService.js';
-import {LikeIds} from '../models/LikeIds.js'
-import { Account } from "../models/Account.js";
+import { LikeIds } from '../models/LikeIds.js';
+import { Account } from '../models/Account.js';
 class PostsService {
   async getPostsBySearchTerm(term, page = 1) {
     const res = await api.get('/api/posts', {
@@ -49,40 +49,26 @@ class PostsService {
   }
 
   async likePost(id) {
-
+  
     const res = await api.post(`/api/posts/${id}/like`);
     // console.log(res.data);
     let post = AppState.posts.findIndex((p) => p.id == id);
-    let post1 = AppState.posts.find(p => p.id ==id)
-    // console.log(post1);
-    console.log(post1);
+
+ 
     AppState.posts.splice(post, 1, new Post(res.data));
-    post1.thumbUp = !post1.thumbUp
-
-console.log(post1);
-  //   AppState.likesAccounts = res.data.likes.map(l => new Account(l))
-  //  console.log(AppState.likesAccounts,'testintg');
-  //  let myLike = AppState.likesAccounts.find(i => i.id == AppState.account.id)
-  //  AppState.myLike = new Account(myLike)
-   
-  //  console.log(AppState.myLike,'test23');
-
-  // AppState.likesAccounts = res.data.likes
-  //   let myLike = AppState.likesAccounts.find((i) => i.id == AppState.account.id);
-  //  AppState.myLike = new Account(myLike);
-  //  console.log(AppState.myLike);
-
+  console.log(res.data);
 
   }
 
-  async toggleLike(){
-    
-AppState.posts.forEach(p => {
-  if (p.likes.id == AppState.account.id) {
-    p.thumbsUp = true
-    console.log(p);
-  }
-})
+  toggleLike(id) {
+    const post = AppState.posts.find((p) => p.id == id);
+    if (!post) {
+      throw new Error('Bad Id');
+    }
+
+    post.thumbUp = !post.thumbUp;
+    console.log(post.thumbUp);
+  
   }
 }
 export const postService = new PostsService();

@@ -20,7 +20,7 @@
             :src="account.picture "
             alt="account photo"
             height="120"
-            class="rounded-circle"
+            class="rounded-circle loginImg"
           />
         </div>
         <div v-else>
@@ -38,16 +38,16 @@
         aria-labelledby="authDropdown"
       > -->
         <router-link :to="{ name: 'Account' }">
-          <div class="hoverable mt-2">
-            Manage Account
+          <div class="hoverable mt-2 d-flex">
+           <h5 class="loginText">Manage Account</h5>    <i class="mdi mdi-account fs-1 me-2"></i>  
           </div>
         </router-link>
         <div
-          class=" hoverable text-danger my-2"
+          class=" hoverable text-danger d-flex my-2"
           @click="logout"
         >
           <i class="mdi mdi-logout"></i>
-          logout
+         <h5 class="loginText">Logout</h5>
      
       </div>
     </div>
@@ -63,24 +63,36 @@
         </span>
       </div>
       <!-- --------------------------------------------------------- -->
-      <div class="d-flex align-items-center">
-        <vs-tooltip :text="account.github" position="right">
-          <i class="mdi mdi-github fs-3 me-2"></i>
+      <div class=" align-items-center">
+<a >
+
+   <vs-tooltip text="Github" position="right">
+          <i  class="mdi mdi-github fs-2 me-2"></i> <p class="smallerText">Github</p>
         </vs-tooltip>
 
-        <i class="mdi mdi-github fs-3 me-2"></i>
-        <small>{{ account.github }}</small>
+
+
+</a>
+
+<a :href="account.linkedin">
+
+<vs-tooltip text="LinkedIn" position="right">
+          <i class="mdi mdi-linkedin fs-2 me-2"></i>
+        </vs-tooltip>
+
+</a>
+
+  
+     
+<a :href="account.resume">
+  <vs-tooltip text="Resume" position="right">
+            <i class="mdi mdi-account fs-2 me-2"></i>
+          </vs-tooltip>
+
+</a>  
+
       </div>
-      <!-- -------------------------------------------------------------- -->
-      <div class="d-flex align-items-center " v-if="account.linkedin">
-        <i class="mdi mdi-linkedin fs-3 me-2"></i>
-        <small>{{ account.linkedin }}</small>
-      </div>
-      <!-- ---------------------------------------------------------------- -->
-      <div class="d-flex align-items-center resume  " v-if="account.resume">
-        <i class="mdi mdi-github fs-3 me-2"></i
-        ><small>{{ account.resume }}</small>
-      </div>
+   
     </div>
   </span>
 </template>
@@ -111,6 +123,7 @@ export default {
       account: computed(() => AppState.account),
       async login() {
         AuthService.loginWithPopup();
+       
       },
       async logout() {
        const yes = await Pop.confirm('Are You Sure?','Click Confirm to Logout','Log Out','question')
@@ -132,29 +145,16 @@ export default {
     letter-spacing: 0.08rem
   }
   
-  .text-shadow{
- 
-    
-    /* Second Color  in text-shadow is the blur */
-  }
-.dropdown-menu {
-  user-select: none;
-  display: block;
-  transform: scale(0);
-  transition: all 0.15s linear;
+.loginImg{
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.dropdown-menu.show {
-  transform: scale(1);
+.smallerText{
+  font-size: 12pt;
 }
 
-.resume {
-  overflow-x: auto;
-}
-
-.resume:hover{
-
-  overflow-x: visible;
+.loginText{
+font-weight: 700;
 }
 .hoverable {
   cursor: pointer;

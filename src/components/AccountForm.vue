@@ -1,6 +1,4 @@
 <template>
- 
-
 
 <!-- Modal -->
 <div class="modal  " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -153,7 +151,7 @@
         ></textarea>
       </div>
 
-      <div class="my-3 position-absolute">
+      <div class="my-3 ">
         <button class="btn btn-success selectable" type="submit">Submit</button>
       </div>
     </form>

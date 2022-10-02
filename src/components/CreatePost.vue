@@ -2,7 +2,16 @@
   <div class="bg-light p-2 elevation-3 mx-4 my-2 customBorder">
     <div class="d-flex justify-content-around ms-4">
       <div class="me-2 mt-4" v-if="acc.picture">
-        <img :src="acc.picture" alt="" class="forcedImg rounded-circle" />
+
+
+        
+        
+        
+        <router-link :to="{ name: 'Profile', params: { id: acc.id } }">
+          <img :src="acc.picture" alt="" class="forcedImg rounded-circle" />
+    
+    </router-link>
+
       </div>
       <div v-else>
         <div class="spinner-border text-primary p-4 mt-4" role="status">
@@ -72,7 +81,9 @@ export default {
 
       async handleSubmit() {
         try {
+          
           await postService.createPost(editable.value);
+          Pop.toast('Posted Successfully','success','center-end',1000,true)
         } catch (error) {
           Pop.error(error, ['']);
         }
@@ -93,14 +104,16 @@ export default {
 .forcedImg {
   height: 100px;
   width: 100px;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   object-fit: cover;
+   transition: all 0.5s ease;
 }
 
 .forcedImg:hover {
   filter: opacity(90%);
   transform: scale(1.1);
-  transition: all 0.5s ease-out;
-  box-shadow: 1px 1px black, 0px 0px 5px rgb(182, 222, 246);
+  transition: all 0.5s ease;
+
 }
 .postComment {
   width: 450px;
@@ -108,9 +121,11 @@ export default {
 
 .customBorder{
   border: 4px dashed rgb(32, 138, 236);
+    transition: all .3s ease;
 }
 
 .customBorder:hover{
+  
   border: 4px dashed #0c1b60;
   transform: scale(1.02);
   transition: all .3s ease;

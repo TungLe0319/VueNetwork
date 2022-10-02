@@ -1,7 +1,7 @@
 <template>
-  <div class="post-card position-relative">
+  <div class="post-card position-relative ">
     <div
-      class="card elevation-3 mx-4 my-2"
+      class="card elevation-3 mx-4 my-2 card-Shadow  borderimg3"
       :class="post.creator.id == account.id ? 'accountImages' : ''"
     >
       <div class="d-flex">
@@ -43,13 +43,27 @@
           </button>
         </div>
         <div class="d-flex" v-if="user.isAuthenticated">
-          <p>{{ post.likeIds.length }}</p>
-          <i
-            :disabled="!user.isAuthenticated"
-            @click="likePost()"
-            v-if="!post.thumbUp"
-            class="mdi mdi-thumb-up fs-2 selectable text-warning text-shadow rounded"
-          ></i>
+          <div v-if="post.thumbUp==true">
+
+            <p>{{ post.likeIds.length }}</p>
+            <i
+              :disabled="!user.isAuthenticated"
+              @click="likePost()"
+              
+              
+              class="mdi mdi-thumb-up"
+            ></i>
+          </div>
+          <div v-else-if="post.thumbUp==false">
+  <p>{{ post.likeIds.length }}</p>
+            <i
+              :disabled="!user.isAuthenticated"
+              @click="likePost()"
+              
+              
+              class="mdi mdi-thumb-down"
+            ></i>
+          </div>
         </div>
         <div class="d-flex" v-else>
           <p>{{ post.likeIds.length }}</p>
@@ -95,9 +109,11 @@ export default {
       account: computed(() => AppState.account),
       user: computed(() => AppState.user),
       myLike: computed(() => AppState.myLike),
+   
       async likePost() {
         try {
           await postService.likePost(props.post.id);
+              //  postService.toggleLike(props.post.id);
         } catch (error) {
           Pop.error(error, '[likePost]');
         }
@@ -107,22 +123,16 @@ export default {
         emit('deletePost');
       },
 
-     
-
       setActivePicture() {
         AppState.activeImage = props.post.imgUrl;
         console.log(AppState.activeImage);
       },
+
+     toggleLike() {
    
-
-async toggleLike(){
-  try {
-      await postService.toggleLike()
-    } catch (error) {
-      Pop.error(error)
-    }
-}
-
+        postService.toggleLike(props.post.id);
+   
+      },
     };
   },
   components: { PostCreator },
@@ -141,16 +151,26 @@ async toggleLike(){
   height: 400px;
   width: auto;
   object-fit: cover;
+    cursor: pointer;
+      transition: all 0.3s ease
+}
+.forcedImg:hover {
+  filter: brightness(90%);
+  transition: all 0.3s ease
+  ;
+
 }
 .deleteImg {
   height: 50px;
   width: 50px;
   object-fit: cover;
+    transition: all 1s ease;
 }
 .deleteImg:hover {
   filter: brightness(120%);
   transform: rotate(180deg);
   transition: all 1s ease;
+  filter: hue-rotate(180deg);
 }
 .accountPicture {
   height: 100px;
@@ -158,10 +178,18 @@ async toggleLike(){
   object-fit: cover;
   border-radius: 4px;
 }
+.card-Shadow{
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+}
 .post-card:hover {
   transform: scale(1.01);
   transition: all 0.3s ease-out;
+
+}
+.post-card {
+  transform: scale(1);
+  transition: all 0.8s ease-out;
 }
 
 .lineSpacing {
@@ -176,5 +204,14 @@ p {
 
 .accountImages {
   border: 4px double rgb(145, 155, 212);
+ 
 }
+
+
+// .borderimg3 {
+//   border: 10px solid transparent;
+//   padding: 15px;
+//   border-image: url(https://www.w3schools.com/css/border.png) 30% round;
+
+// }
 </style>

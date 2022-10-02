@@ -1,8 +1,10 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-     
-      <div class="col-md-2" >
+     <div class="col-md-12">
+    
+     </div>
+      <div class="col-md-6" >
         <ProfileCards  />
       </div>
     </div>
@@ -47,7 +49,10 @@
         />
       </div>
       <div class="col-md-12 d-flex justify-content-center">
+        
         <div class="d-flex justify-content-center mt-2">
+
+          
           <vs-tooltip color="primary" text="PreviousPage" position="left">
             <vs-button
               class="me-2 p-0"
@@ -85,8 +90,11 @@ import ProfileDetail from '../components/ProfileDetail.vue';
 import NaiveTest from '../components/NaiveTest.vue';
 import ProfileCards1 from '../components/ProfileCards.vue';
 
+
 export default {
+  
   setup() {
+    
     async function getPosts() {
       try {
         await postService.getPosts();
@@ -109,6 +117,9 @@ export default {
       async changePage(pageUrl) {
         try {
           await postService.getPosts(pageUrl);
+          let test1 = pageUrl.slice(-1)
+          Pop.toast(` Page:${test1}`,``,"bottom-end")
+          Pop.customTung()
         } catch (error) {
           Pop.error(error.message);
         }

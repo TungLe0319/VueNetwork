@@ -3,7 +3,7 @@
     <router-link :to="{ name: 'Profile', params: { id: creator.id } }">
       <img
         :src="creator.picture"
-        class="accountPicture elevation-4 mt-2 rounded-circle forcedImg"
+        class="accountPicture elevation-4 mt-2 rounded-circle forcedImg "
         :alt="creator.name"
       />
     </router-link>
@@ -11,7 +11,13 @@
   
 
   <div class="d-flex align-items-center mt-4">
-    <h6 class="text-primary">{{ creator.name }}</h6>
+
+
+       <router-link :to="{ name: 'Profile', params: { id: creator.id } }">
+
+      
+        <h6 class="text-primary">{{ creator.name }}</h6>
+    </router-link>
     <span v-if="creator.graduated"> <i class="mdi mdi-school fs-5"></i> </span>
   </div>
 </template>
@@ -42,11 +48,14 @@ export default {
   height: 80px;
   width: 80px;
   object-fit: cover;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+       transition: all 0.4s ease;
 }
 
 .forcedImg:hover{
-  filter: brightness(120%);
-  box-shadow: 4px 2px 10px red;
+  filter: brightness(110%);
+   box-shadow: 0 4px 8px 0 rgba(6, 125, 223, 0.2), 0 6px 20px 0 rgba(9, 148, 212, 0.19);
+  transition: all 0.4s ease;
 }
 
 h6{

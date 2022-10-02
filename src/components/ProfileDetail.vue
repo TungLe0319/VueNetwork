@@ -1,56 +1,75 @@
 <template>
-  
+  <div v-if="profile">
+    <div
+      class="bg-light elevation-3 m-1 elevation-3 mt-2 rounded border border-secondary border-1 cover-img"
+      :style="{ backgroundImage: `url(${profile.coverImg})` }"
+    >
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="m-2">
+          <img
+            :src="profile.picture"
+            alt=""
+            class="rounded-circle forcedImg border border-3 border-warning"
+          />
+        </div>
+        <div class="me-3 text-shadow d-flex flex-column">
+          <span>
+            <a :href="profile.github" class="text-light">
+              <vs-tooltip text="github" position="left" color="primary">
+                <i
+                  :class="profile.github ? '' : 'text-dark opacity-50 disabled'"
+                  class="mdi mdi-github fs-2"
+                ></i>
 
-  <div class="bg-light elevation-3 m-1 elevation-3 mt-2 rounded border border-secondary border-1 cover-img" :style="{backgroundImage: `url(${profile.coverImg})`}">
-  
+              </vs-tooltip>
+            </a>
+          </span>
+          <span>
+            <a :href="profile.github" class="text-light">
 
-    <div class="d-flex justify-content-between align-items-center">
-      <div class="m-2" >
-        <img
-          :src="profile.picture"
-          alt=""
-          class="rounded-circle forcedImg border border-3 border-warning"
-        />
+              <vs-tooltip text="LinkedIn" position="left" color="primary">
+
+                <i
+                  :class="profile.linkedIn ? '' : 'text-dark opacity-50 disabled'"
+                  class="mdi mdi-linkedin fs-2"
+                ></i>
+              </vs-tooltip>
+            </a>
+          </span>
+          <span>
+            <a :href="profile.github" class="text-light">
+              <vs-tooltip text="resume" position="left" color="primary">
+                 <i
+                :class="profile.resume ? '' : 'text-dark opacity-50 disabled'"
+                class="mdi mdi-text-box fs-2"
+              ></i>
+              </vs-tooltip>
+             
+            </a>
+          </span>
+        </div>
       </div>
-      <div class="me-3 text-shadow  d-flex flex-column">
-        <span>
-
-          <i :class="profile.github? '' : 'text-dark opacity-50' " class="mdi mdi-github fs-2"></i>{{profile.github}}
-        </span>
-        <span>
-
-          <i :class="profile.linkedIn? '' : 'text-dark opacity-50' " class="mdi mdi-linkedin fs-2"></i>{{profile.linkedIn}}
-        </span>
-        <span>
-
-          <i :class="profile.resume? '' : 'text-dark opacity-50' " class="mdi mdi-text-box fs-2"></i>{{profile.resume}}
-        </span>
+      <div class="mx-3 mt-3 text-shadow">
+        <p class="">{{ profile.class }}</p>
+        <h5>{{ profile.name }}</h5>
+        <div>
+          <p>{{ profile.bio }}</p>
+        </div>
+        <div class="d-flex justify-content-end">
+          <vs-tooltip text="Edit Account" position="left" color="primary">
+            <i
+              class="mdi mdi-account-edit fs-1 btn text-light"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            ></i>
+          </vs-tooltip>
+        </div>
       </div>
-    
     </div>
-      <div class="mx-3 mt-3 text-shadow ">
-       <p class="">   {{profile.class}}</p>
-       <h5 >{{profile.name}}</h5>
-       <div>
-        <p>{{profile.bio}}</p>
-       </div>
-       <div class="d-flex justify-content-end">
-
- <vs-tooltip text="Edit Account" position="left" color="primary">
- <i class="mdi mdi-account-edit fs-1 btn text-light " data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
- </vs-tooltip>
-
-
-
-       </div>
-      </div>
   </div>
-
 
   <!-- ---------------------------------------------- -->
-  <div>
-  
-  </div>
+  <div></div>
   <!-- ---------------------------------------------- -->
 </template>
 
@@ -73,16 +92,16 @@ import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { Account } from '../models/Account.js';
 import Pop from '../utils/Pop.js';
-import CreatePost from "./CreatePost.vue";
+import CreatePost from './CreatePost.vue';
 
 export default {
-    props: {
-        profile: { type: Account, required: true },
-    },
-    setup(props) {
-        return {};
-    },
-    components: { CreatePost }
+  props: {
+    profile: { type: Account, required: true },
+  },
+  setup(props) {
+    return {};
+  },
+  components: { CreatePost },
 };
 </script>
 
@@ -106,9 +125,8 @@ export default {
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  ;
 }
-.customBg{
+.customBg {
   background-color: rgba(14, 1, 1, 0.219);
 }
 </style>

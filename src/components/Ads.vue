@@ -1,9 +1,15 @@
 <template>
 
   <div class="d-flex text-end ">
-     <vs-tooltip color="primary" :text="ad.title" position="left">
-   <img :src="ad.tall" :alt="ad.title" class="img-fluid elevation-4 w-75  mt-2 rounded" >
+
+    <a href="https://tungle0319.github.io/DimensionMiner/" target="_blank">
+
+  <vs-tooltip color="primary" :text="ad.title" position="left">
+   <img :src="ad.tall" :alt="ad.title" class="img-fluid elevation-4 w-75  mt-2 rounded box-shadow filter1" >
     </vs-tooltip>
+   
+
+    </a>
    
 
   </div>
@@ -35,12 +41,20 @@ ad:{type: Ad, required:true}
   letter-spacing: 0.08rem
   /* Second Color  in text-shadow is the blur */
 }
-.forcedImg{
- 
-  width: auto;
-  object-fit: contain;
+
+.filter1:hover{
+    filter: brightness(90%);
+    filter: sepia(30%);
+transition: all 0.4s ease;
+}
+.filter1{
+
+transition: all 0.4s ease;
 }
 
+.box-shadow{
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
 </style>
 

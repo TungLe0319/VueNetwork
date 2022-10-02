@@ -9,32 +9,15 @@
           <Login />
         </div>
 
-        <!-- <div class="mt-2">
-          <button
-            class="btn mt-3 text-success lighten-30 selectable text-uppercase"
-          >
-            <router-link
-              :to="{ name: 'Home' }"
-              class="text-success lighten-30 text-uppercase"
-            >
-              Home
-            </router-link>
-          </button>
-        </div> -->
+    
       </div>
-      <!---------------------------------->
-      <!-- <div class="col-md-2 m-0 ">
-
-        <SideBar/>
-      </div> -->
-      <!---------------------------------->
-
+   
       <div class="col-md-8 main-content">
         <router-view />
       </div>
 
-      <div class="col-md-2 d-none d-md-block">
-        
+      <div class="col-md-2 d-none d-md-block ">
+        <span class="d-flex justify-content-center"> <h6 class="sponsor"> Sponsors: </h6> </span>
         <div v-for="a in ads" class="d-flex  ms-5  ">
           <Ads :ad="a" />
         </div>
@@ -111,12 +94,14 @@ background-size: cover;
 background-position: center;
 background-size: cover;
 
+ transition: all 1.3s ease;
 }
 
 .profile-Banner:hover{
   transform: scale(1.01);
   filter: brightness(110%);
-  transition: all 0.3s ease;
+  
+  transition: all 1.3s ease
 }
 
 .ad-Banner{
@@ -132,6 +117,13 @@ background-size: cover;
 
 .adColumn{
  height: 10vh;
+}
+
+.sponsor{
+  font-size:  large;
+  font-weight: 700;
+  margin-top: 0.5rem;
+
 }
 </style>
 
