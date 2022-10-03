@@ -30,7 +30,7 @@ export default {
       async handleSubmit() {
         try {
           await postService.getPostsBySearchTerm(editable.value.term);
-          // await profilesService.getProfilesBySearchTerm(editable.value.term);
+          await profilesService.getProfilesBySearchTerm(editable.value.term);
         } catch (error) {
           // Pop.error(error,[''])
         }

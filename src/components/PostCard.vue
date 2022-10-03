@@ -42,7 +42,7 @@
         </div>
 
         <div v-if="user.isAuthenticated">
-          <div class="d-flex justify-content-start" v-if="post.thumbUp == true">
+          <div class="d-flex justify-content-start" v-if="liked">
             <p class="postLikeLength hoverable">{{ post.likeIds.length }}</p>
 
             <i
@@ -51,14 +51,37 @@
               class="mdi mdi-star fs-2 text-warning text-shadow rounded hoverableThumb"
             ></i>
           </div>
-          <div
-            class="d-flex justify-content-start"
-            v-else-if="post.thumbUp == false"
-          >
+          <div class="d-flex justify-content-start" v-else>
             <p class="postLikeLength hoverable">{{ post.likeIds.length }}</p>
 
             <i
               @click="likePost()"
+              :class="post.likeIds.length"
+              class="mdi mdi-star-outline fs-2 text-warning text-shadow hoverableThumb rounded"
+            ></i>
+          </div>
+          <div></div>
+          <!-- <div v-else>
+            <p class="postLikeLength">{{ post.likeIds.length }}</p>
+            <i
+              :disabled="!user.isAuthenticated"
+              @click="likePost()"
+              class="mdi mdi-thumb-down"
+            ></i>
+          </div> -->
+        </div>
+        <div v-else>
+          <div class="d-flex justify-content-start" v-if="!liked">
+            <p class="postLikeLength hoverable">{{ post.likeIds.length }}</p>
+
+            <i
+              class="mdi mdi-star fs-2 text-warning text-shadow rounded hoverableThumb"
+            ></i>
+          </div>
+          <div class="d-flex justify-content-start" v-else>
+            <p class="postLikeLength hoverable">{{ post.likeIds.length }}</p>
+
+            <i
               :class="post.likeIds.length"
               class="mdi mdi-star-outline fs-2 text-warning text-shadow hoverableThumb rounded"
             ></i>
@@ -87,6 +110,7 @@
         </div>
       </div>
     </div>
+  
   </div>
 </template>
 
@@ -122,12 +146,13 @@ export default {
       account: computed(() => AppState.account),
       user: computed(() => AppState.user),
       myLike: computed(() => AppState.myLike),
+      liked: computed(() => props.post.likeIds.includes(AppState.account?.id)),
       LikeListName: computed(() => AppState.likeNamesList),
       async likePost() {
         try {
           await postService.likePost(props.post.id);
           //  postService.toggleLike(props.post.id);
-          Pop.toast('Liked','success','top-end')
+          Pop.toast('Liked', 'success', 'top-end');
         } catch (error) {
           Pop.error(error, '[likePost]');
         }

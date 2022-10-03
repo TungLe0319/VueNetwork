@@ -1,5 +1,5 @@
 <template>
-  <div class="mx-2" v-if="creator.picture">
+  <div class="mx-2 position-relative" v-if="creator.picture">
     <router-link :to="{ name: 'Profile', params: { id: creator.id } }">
       <img
         :src="creator.picture"
@@ -8,13 +8,13 @@
         @error="setAltImg"
       />
     </router-link>
-    <div class="">
+    <div class="" v-if="creator.graduated">
       <img
         src="https://cdn-icons-png.flaticon.com/512/732/732475.png"
         alt=""
-        width="30 "
-        height="30"
-        class="text-shadow"
+        width="20 "
+        height="20"
+        class="text-shadow schoolIcon"
       />
     </div>
   </div>
@@ -67,5 +67,11 @@ export default {
 h6 {
   font-size: large;
   font-weight: 800;
+}
+
+.schoolIcon{
+  position: absolute;
+  left: 0;
+  bottom: 10px;
 }
 </style>

@@ -21,7 +21,7 @@
 
   <div class="d-flex align-items-center mt-4">
     <router-link :to="{ name: 'Profile', params: { id: creator.id } }">
-     By <b class="text-dark creatorName"> {{ creator.name }}</b>
+      <b class="text-dark "> By {{ creator.name }}</b>
     </router-link>
   </div>
 </template>
