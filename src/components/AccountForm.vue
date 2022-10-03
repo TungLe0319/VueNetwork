@@ -48,11 +48,11 @@
 
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-6 justify-content-center d-flex">
                 <img
                   :src="account.picture"
                   alt=""
-                  class="img-fluid forcedImg Img1"
+                  class="img-fluid w-50 forcedImg Img1"
                 />
               </div>
 
