@@ -1,6 +1,5 @@
 <template>
   <div class="container-fluid">
-   
     <div class="row scrollMe justify-content-center">
       <div class="col-md-8" v-if="user.isAuthenticated">
         <CreatePost />
@@ -12,12 +11,12 @@
         <!-- <div class="col-md-6">
           <SearchForm />
         </div> -->
-        <div class="col-md-12 d-flex justify-content-center position-relative ">
-          <div class="d-flex justify-content-center mt-2 ">
+        <div class="col-md-12 d-flex justify-content-center position-relative">
+          <div class="d-flex justify-content-center mt-2">
             <vs-tooltip color="primary" text="PreviousPage" position="left">
               <vs-button
-              v-if="previousPage"
-                class="me-2 p-0  "
+                v-if="previousPage"
+                class="me-2 p-0"
                 @click="changePage(previousPage)"
                 type="gradient"
                 ><i class="mdi mdi-arrow-left fs-2"></i
@@ -25,6 +24,7 @@
             </vs-tooltip>
             <vs-tooltip color="warning" text="NextPage" position="right">
               <vs-button
+                v-if="nextPage"
                 class="p-0"
                 @click="changePage(nextPage)"
                 color="warning"
@@ -32,9 +32,7 @@
                 ><i class="mdi mdi-arrow-right fs-2"></i
               ></vs-button>
             </vs-tooltip>
-           
           </div>
-            
         </div>
       </div>
       <div class="col-md-8" v-for="p in posts" :key="p">
@@ -45,12 +43,10 @@
         />
       </div>
       <div class="col-md-12 d-flex justify-content-center">
-        
         <div class="d-flex justify-content-center mt-2">
-
-          
           <vs-tooltip color="primary" text="PreviousPage" position="left">
             <vs-button
+              v-if="previousPage"
               class="me-2 p-0"
               @click="changePage(previousPage)"
               type="gradient"
@@ -59,6 +55,7 @@
           </vs-tooltip>
           <vs-tooltip color="warning" text="NextPage" position="right">
             <vs-button
+              v-if="nextPage"
               class="p-0"
               @click="changePage(nextPage)"
               color="warning"
@@ -66,10 +63,8 @@
               ><i class="mdi mdi-arrow-right fs-2"></i
             ></vs-button>
           </vs-tooltip>
-          
         </div>
       </div>
-  
     </div>
   </div>
 </template>
@@ -87,14 +82,11 @@ import ProfileCards from '../components/ProfileCards.vue';
 import ProfileDetail from '../components/ProfileDetail.vue';
 import NaiveTest from '../components/NaiveTest.vue';
 import ProfileCards1 from '../components/ProfileCards.vue';
-import CreatorIcons from "../components/creatorIcons.vue";
-import { useRouter } from "vue-router";
-
+import CreatorIcons from '../components/creatorIcons.vue';
+import { useRouter } from 'vue-router';
 
 export default {
-  
   setup() {
-
     async function getPosts() {
       try {
         await postService.getPosts();
@@ -116,11 +108,9 @@ export default {
       user: computed(() => AppState.user),
       async changePage(pageUrl) {
         try {
-        
           await postService.getPosts(pageUrl);
-          let test1 = pageUrl.slice(-1)
-          Pop.toast(` Page: ${test1} of `,``,"bottom-end")
-
+          let test1 = pageUrl.slice(-1);
+          Pop.toast(` Page: ${test1}  `, ``, 'bottom-end');
         } catch (error) {
           Pop.error(error.message);
         }
@@ -147,8 +137,8 @@ export default {
     ProfileDetail,
     NaiveTest,
     ProfileCards1,
-    CreatorIcons
-},
+    CreatorIcons,
+  },
 };
 </script>
 
@@ -158,12 +148,10 @@ export default {
   overflow: auto;
 }
 
-.scrollX{
- height: 100px;
+.scrollX {
+  height: 100px;
   overflow-x: auto;
 }
-
-
 </style>
 // import { defineComponent } from 'vue' // import { NButton , NCard, NCarousel
 ,N} from 'naive-ui' // export default defineComponent({ // components: { //

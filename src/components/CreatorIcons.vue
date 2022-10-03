@@ -1,16 +1,23 @@
 <template>
-  
-   <div class="mx-2" v-if="creator.picture">
+  <div class="mx-2" v-if="creator.picture">
     <router-link :to="{ name: 'Profile', params: { id: creator.id } }">
       <img
         :src="creator.picture"
-        class="accountPicture elevation-4 mt-2 rounded-circle forcedImg "
+        class="accountPicture elevation-4 mt-2 rounded-circle forcedImg"
         alt="creator.name"
-       @error="setAltImg"
+        @error="setAltImg"
       />
     </router-link>
+    <span v-if="profile.graduated" class="">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/732/732475.png"
+        alt=""
+        width="30 "
+        height="30"
+        class="text-shadow"
+      />
+    </span>
   </div>
-  
 </template>
 
 <script>
@@ -22,15 +29,13 @@ export default {
   },
 
   setup(props) {
-
     return {
-
-
-setAltImg(event){
-  event.target.src='https://i.giphy.com/media/L1R1tvI9svkIWwpVYr/giphy.webp'
-}
-//https://i.pinimg.com/564x/93/47/3d/93473d632d1e576ca274ceab098d58a8.jpg
-  //https://i.pinimg.com/736x/b3/1d/5f/b31d5f818bfacf883496487abe89ee50.jpg
+      setAltImg(event) {
+        event.target.src =
+          'https://i.giphy.com/media/L1R1tvI9svkIWwpVYr/giphy.webp';
+      },
+      //https://i.pinimg.com/564x/93/47/3d/93473d632d1e576ca274ceab098d58a8.jpg
+      //https://i.pinimg.com/736x/b3/1d/5f/b31d5f818bfacf883496487abe89ee50.jpg
     };
   },
 };
