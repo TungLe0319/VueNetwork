@@ -59,7 +59,7 @@
 
     <div>
       <vs-tooltip
-        text="Search Posts or Profiles"
+        text="Search Posts"
         position="left"
         color="warning"
       >

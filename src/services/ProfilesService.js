@@ -9,7 +9,7 @@ class ProfilesService {
   }
 
   async getProfilesBySearchTerm(term) {
-    AppState.profiles = []
+    // AppState.profiles = []
     const res = await api.get('/api/profiles', {
       params: {
         query: term,

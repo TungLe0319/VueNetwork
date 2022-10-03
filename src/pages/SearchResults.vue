@@ -5,7 +5,7 @@
       <SearchForm />
     </div>
     <div class="col-md-12">
-      <SearchProfiles />
+  
     </div>
    
         <!-- <ProfileCards  /> -->
