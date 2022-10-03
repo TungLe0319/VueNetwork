@@ -20,11 +20,24 @@ class PostsService {
   }
   async getPosts(page) {
     const res = await postApi.get(page);
-    console.log(res.data.posts);
+    // console.log(res.data.posts);
     AppState.posts = res.data.posts.map((p) => new Post(p));
     AppState.nextPage = res.data.older;
     AppState.previousPage = res.data.newer;
-    // AppState.likesAccounts = res.data
+ 
+
+
+
+    AppState.posts.forEach((p) => {
+      let myId = AppState.account.id;
+
+      p.likes.forEach((l) => {
+        if (l.id == myId) {
+          p.thumbUp = true;
+        }
+      });
+      // console.log(AppState.posts);
+    });
   }
 
   async getPostsByCreatorId(creatorId) {
@@ -50,15 +63,21 @@ class PostsService {
   }
 
   async likePost(id) {
-  
     const res = await api.post(`/api/posts/${id}/like`);
     // console.log(res.data);
     let post = AppState.posts.findIndex((p) => p.id == id);
 
- 
     AppState.posts.splice(post, 1, new Post(res.data));
-  console.log(res.data);
+console.log(AppState.likeListNames);
+    AppState.posts.forEach((p) => {
+      let myId = AppState.account.id;
 
+      p.likes.forEach((l) => {
+        if (l.id == myId) {
+          p.thumbUp = true;
+        }
+      });
+    });
   }
 
   toggleLike(id) {
@@ -69,7 +88,6 @@ class PostsService {
 
     post.thumbUp = !post.thumbUp;
     console.log(post.thumbUp);
-  
   }
 }
 export const postService = new PostsService();

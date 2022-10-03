@@ -39,6 +39,7 @@
         <PostCard
           :post="p"
           :creator="p.creator"
+         
           @deletePost="deletePost(p.id)"
         />
       </div>
@@ -106,6 +107,7 @@ export default {
       profiles: computed(() => AppState.profiles),
       account: computed(() => AppState.account),
       user: computed(() => AppState.user),
+ 
       async changePage(pageUrl) {
         try {
           await postService.getPosts(pageUrl);

@@ -15,6 +15,15 @@
         height="120"
         class="rounded-circle loginImg"
       />
+      <span class="graduated" v-if="account.graduated">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/732/732475.png"
+        alt=""
+        width="30 "
+        height="30"
+        class="text-shadow"
+      />
+    </span>
     </div>
     <div v-else>
       <div class="spinner-border text-primary p-4" role="status">

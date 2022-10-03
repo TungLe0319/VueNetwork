@@ -1,19 +1,19 @@
 <template>
-  <div v-if="profile">
+  <div v-if="account">
     <div
-      class="bg-light elevation-3 m-1 elevation-3 mt-2 rounded border border-secondary border-1 cover-img"
-      :style="{ backgroundImage: `url(${profile.coverImg})` }"
+      class="bg-dark elevation-3 m-1 elevation-3 mt-2 rounded border border-secondary border-1 cover-img"
+      :style="{ backgroundImage: `url(${profile?.coverImg})` }"
     >
       <div class="d-flex justify-content-between align-items-center">
-        <div class="m-2 position-relative">
+        <div class="m-2 position-relative" v-if="profile?.picture">
           <img
-            :src="profile.picture"
+            :src="profile?.picture"
             alt=""
             class="rounded-circle forcedImg border border-3 border-warning"
             @error="altImgUrl"
           />
 
-          <span v-if="profile.graduated" class="">
+          <span v-if="profile?.graduated" class="">
             <img
               src="https://cdn-icons-png.flaticon.com/512/732/732475.png"
               alt=""
@@ -78,7 +78,8 @@
         <div>
           <p>{{ profile.bio }}</p>
         </div>
-        <div class=" " v-if="account.id == profile.id">
+        <div v-if="route.fullPath == '/account'">
+ <div class=" " v-if="account.id == profile.id">
           <vs-tooltip text="Edit Account" position="left" color="primary">
             <i
               class="mdi mdi-account-edit fs-1 btn text-light"
@@ -87,7 +88,9 @@
             ></i>
           </vs-tooltip>
         </div>
-        <div v-else></div>
+        </div>
+       
+       
       </div>
     </div>
   </div>
@@ -114,7 +117,7 @@
 <script>
 import { computed } from '@vue/reactivity';
 import { onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { AppState } from '../AppState.js';
 import { Account } from '../models/Account.js';
 import Pop from '../utils/Pop.js';
@@ -126,10 +129,14 @@ export default {
   },
   setup(props) {
     const route = useRoute();
+    const router = useRouter();
+    let routePath = router.currentRoute.value
+    console.log(routePath.fullPath);
     return {
+      routePath,
       route,
       account: computed(() => AppState.account),
-
+      profileTest: computed(() => AppState.profiles),
       altImgUrl(event) {
         event.target.src =
           'https://i.giphy.com/media/L1R1tvI9svkIWwpVYr/giphy.webp';
