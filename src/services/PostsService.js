@@ -68,7 +68,7 @@ class PostsService {
     let post = AppState.posts.findIndex((p) => p.id == id);
 
     AppState.posts.splice(post, 1, new Post(res.data));
-console.log(AppState.likeListNames);
+// console.log(AppState.likeListNames);
     AppState.posts.forEach((p) => {
       let myId = AppState.account.id;
 

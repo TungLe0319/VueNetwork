@@ -9,7 +9,7 @@
           <img
             :src="profile?.picture"
             alt=""
-            class="rounded-circle forcedImg border border-3 border-warning"
+            class="rounded-circle forcedImg border border-3 border-warning hoverable profileImg"
             @error="altImgUrl"
           />
 
@@ -17,9 +17,9 @@
             <img
               src="https://cdn-icons-png.flaticon.com/512/732/732475.png"
               alt=""
-              width="30 "
-              height="30"
-              class="text-shadow"
+              width="40 "
+              height="40"
+              class="text-shadow schoolIcon"
             />
           </span>
         </div>
@@ -34,7 +34,7 @@
               <vs-tooltip text="github" position="left" color="primary">
                 <i
                   :class="profile.github ? '' : 'text-dark opacity-50 disabled'"
-                  class="mdi mdi-github fs-2"
+                  class="mdi mdi-github fs-1 editAccount"
                 ></i>
               </vs-tooltip>
             </a>
@@ -49,7 +49,7 @@
               <vs-tooltip text="LinkedIn" position="left" color="primary">
                 <i
                   :class="profile.linkedin ? '' : 'text-dark opacity-50 '"
-                  class="mdi mdi-linkedin fs-2"
+                  class="mdi mdi-linkedin fs-1 editAccount"
                 ></i>
               </vs-tooltip>
             </a>
@@ -65,7 +65,7 @@
               <vs-tooltip text="resume" position="left" color="primary">
                 <i
                   :class="profile.resume ? '' : 'text-dark opacity-50 disabled'"
-                  class="mdi mdi-text-box fs-2"
+                  class="mdi mdi-text-box fs-1 editAccount"
                 ></i>
               </vs-tooltip>
             </a>
@@ -73,24 +73,28 @@
         </div>
       </div>
       <div class="mx-3 mt-3 text-shadow">
+        <h6 class="">{{profile.email}}</h6>
         <h1>{{ profile.name }}</h1>
-        <h5 class="class1">{{ profile.class }}</h5>
-        <div>
+        <h5 class="class1" >Class: {{ profile.class }}</h5>
+        
+        <div v-if="profile.bio">
+          <h5><em>Bio:</em></h5>
           <p>{{ profile.bio }}</p>
         </div>
+        <div v-else>
+          No Profile Bio...
+        </div>
         <div v-if="route.fullPath == '/account'">
- <div class=" " v-if="account.id == profile.id">
-          <vs-tooltip text="Edit Account" position="left" color="primary">
-            <i
-              class="mdi mdi-account-edit fs-1 btn text-light"
-              data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
-            ></i>
-          </vs-tooltip>
+          <div class=" " v-if="account.id == profile.id">
+            <vs-tooltip text="Edit Account" position="left" color="primary">
+              <i
+                class="mdi mdi-account-edit fs-1 btn text-light editAccount"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              ></i>
+            </vs-tooltip>
+          </div>
         </div>
-        </div>
-       
-       
       </div>
     </div>
   </div>
@@ -130,7 +134,7 @@ export default {
   setup(props) {
     const route = useRoute();
     const router = useRouter();
-    let routePath = router.currentRoute.value
+    let routePath = router.currentRoute.value;
     console.log(routePath.fullPath);
     return {
       routePath,
@@ -180,5 +184,39 @@ export default {
 
 .class1 {
   color: rgba(225, 232, 236, 0.925);
+}
+
+.hoverable {
+  cursor: pointer;
+}
+
+.noCursor {
+  pointer-events: none;
+}
+
+.editAccount:hover{
+transition: all 0.3s ease;
+filter: brightness(120%);
+transform: scale(1.05);
+}
+.editAccount{
+transition: all 0.3s ease;
+}
+
+.profileImg {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.5s ease;
+}
+.profileImg:hover {
+  transform: scale(1.01);
+  transition: all 0.5s ease;
+  filter: brightness(120%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(142, 238, 228, 0.756);
+}
+
+.schoolIcon{
+  position: absolute;
+  left: 0;
 }
 </style>

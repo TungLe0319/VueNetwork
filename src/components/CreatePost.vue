@@ -37,9 +37,8 @@
             <input
               type="url"
               v-model="editable.imgUrl"
-              placeholder="Image url..."
+              placeholder="url..."
               class="form-control"
-              min="0"
             />
           </div>
 

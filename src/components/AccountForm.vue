@@ -132,14 +132,14 @@
                 v-model="editable.bio"
                 placeholder="bio."
                 class="mt-2"
-                rows="4"
+                rows="5"
               ></textarea>
               <span>Bio</span>
             </div>
 
             <div class="my-3">
               <button class="btn btn-success selectable" type="submit">
-                Submit
+                Edit Account 
               </button>
             </div>
           </form>
@@ -252,7 +252,7 @@ export default {
 .inputBox2 span {
   position: absolute;
   left: 0;
-  bottom: 3em;
+  bottom: 4.2em;
   padding: 10px;
   pointer-events: none;
   font-size: 1em;

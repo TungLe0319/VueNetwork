@@ -25,9 +25,9 @@
           width="100"
           height="80"
         />
-        <div class="d-flex align-items-center">
+        <!-- <div class="d-flex align-items-center">
           <h4>[̲̅u][̲̅e][̲̅l][̲̅u][̲̅p][̲̅t][̲̅u][̲̅o][̲̅u][̲̅s]</h4>
-        </div>
+        </div> -->
       </div>
     </div>
 

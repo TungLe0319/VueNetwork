@@ -18,7 +18,7 @@
 
       <div class="col-md-2 d-none d-md-block">
         <span class="d-flex justify-content-center">
-          <h6 class="sponsor text-light text-shadow">Sponsors:</h6>
+          <h6 class="sponsor text-light text-shadow nameBox2  p-1 rounded">Sponsors:</h6>
         </span>
         <div v-for="a in ads" class="d-flex ms-5 ad-Banner">
           <vs-tooltip
@@ -53,6 +53,14 @@
       </div>
       <!--  -->
     </div>
+    <footer class=" p-1">
+     <div class="text-light d-flex justify-content-start ">
+      <span>
+
+        <h5 class="nameBox p-1 rounded "> By Tung Le</h5>
+      </span>
+     </div>
+    </footer>
   </main>
 </template>
 
@@ -150,6 +158,13 @@ main {
   text-shadow: 1px 1px black, 0px 0px 5px rgb(58, 56, 55);
   font-weight: bold;
   letter-spacing: 0.08rem;
+}
+
+.nameBox{
+  background-color: rgba(25, 23, 23, 0.616);
+}
+.nameBox2{
+  background-color: rgba(25, 57, 87, 0.616);
 }
 </style>
 

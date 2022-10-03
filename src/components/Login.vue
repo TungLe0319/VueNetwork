@@ -8,7 +8,7 @@
   </button>
 
   <div class="my-2 my-lg-0" v-else>
-    <div v-if="account.picture" class="d-flex my-4">
+    <div v-if="account.picture" class="d-flex my-4 position-relative">
       <img
         :src="account.picture"
         alt="account photo"
@@ -16,14 +16,14 @@
         class="rounded-circle loginImg"
       />
       <span class="graduated" v-if="account.graduated">
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/732/732475.png"
-        alt=""
-        width="30 "
-        height="30"
-        class="text-shadow"
-      />
-    </span>
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/732/732475.png"
+          alt=""
+          width="30 "
+          height="30"
+          class="text-shadow schoolIcon"
+        />
+      </span>
     </div>
     <div v-else>
       <div class="spinner-border text-primary p-4" role="status">
@@ -41,7 +41,7 @@
       > -->
   <router-link :to="{ name: 'Account' }">
     <div class="hoverable mt-2 d-flex">
-      <h5 class="loginText">Manage Account</h5>
+      <h5 class="loginText p-1 rounded">Manage Account</h5>
     </div>
   </router-link>
   <div class="hoverable text-danger d-flex logOutText" @click="logout">
@@ -58,22 +58,31 @@
     </div>
     <!-- --------------------------------------------------------- -->
     <div class="align-items-center">
-      <a :href="account.github" v-if="account.github">
-        <vs-tooltip text="Github" position="right">
-          <i class="mdi mdi-github fs-2 me-2"></i>
-        </vs-tooltip>
+      <a
+        :href="account.github"
+        v-if="account.github"
+        class="text-light"
+        target="_blank"
+      >
+        <i class="mdi mdi-github fs-1 me-2"></i>
       </a>
 
-      <a :href="account.linkedin" v-if="account.linkedin">
-        <vs-tooltip text="LinkedIn" position="right">
-          <i class="mdi mdi-linkedin fs-2 me-2"></i>
-        </vs-tooltip>
+      <a
+        :href="account.linkedin"
+        v-if="account.linkedin"
+        class="text-light"
+        target="_blank"
+      >
+        <i class="mdi mdi-linkedin fs-1 me-2"></i>
       </a>
 
-      <a :href="account.resume" v-if="account.resume">
-        <vs-tooltip text="Resume" position="right">
-          <i class="mdi mdi-account fs-2 me-2"></i>
-        </vs-tooltip>
+      <a
+        :href="account.resume"
+        v-if="account.resume"
+        class="text-light"
+        target="_blank"
+      >
+        <i class="mdi mdi-account fs-1 me-2"></i>
       </a>
     </div>
     <div></div>
@@ -121,8 +130,14 @@ div {
 
 .loginImg {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.5s ease;
 }
-.loginImg {
+.loginImg:hover {
+  transform: scale(1.02);
+  transition: all 0.5s ease;
+  filter: brightness(120%);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(142, 238, 228, 0.756);
 }
 
 .smallerText {
@@ -131,9 +146,14 @@ div {
 
 .loginText {
   font-weight: 700;
+  transition: all 0.5s ease;
 }
 .loginText:hover {
-  transition: all 0.4s ease;
+  background-color: rgba(151, 218, 232, 0.536);
+  padding: 2px 2px 2px 2px;
+  border-radius: 5px;
+
+  transition: all 0.5s ease;
 }
 .logOutText {
   font-weight: 700;
@@ -150,5 +170,10 @@ div {
 
 .hoverable {
   cursor: pointer;
+}
+
+.schoolIcon{
+  position: absolute;
+  left: 0;
 }
 </style>

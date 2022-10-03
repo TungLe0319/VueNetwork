@@ -29,7 +29,7 @@
       >
         <!-- Delete Post Button -->
         <div
-          class="position-absolute top-0 end-0 "
+          class="position-absolute top-0 end-0"
           v-if="post.creator.id == account.id"
         >
           <button @click.stop="$emit('deletePost')" class="btn">
@@ -40,31 +40,30 @@
             />
           </button>
         </div>
-        
-        <div  v-if="user.isAuthenticated">
+
+        <div v-if="user.isAuthenticated">
           <div class="d-flex justify-content-start" v-if="post.thumbUp == true">
             <p class="postLikeLength hoverable">{{ post.likeIds.length }}</p>
 
-            <vs-tooltip>
-              <i
-                :disabled="!user.isAuthenticated"
-                @click="likePost()"
-                class="mdi mdi-star fs-2 text-warning text-shadow rounded hoverableThumb"
-              ></i>
-            </vs-tooltip>
+            <i
+              :disabled="!user.isAuthenticated"
+              @click="likePost()"
+              class="mdi mdi-star fs-2 text-warning text-shadow rounded hoverableThumb"
+            ></i>
           </div>
-          <div class="d-flex justify-content-start" v-else-if="post.thumbUp == false">
+          <div
+            class="d-flex justify-content-start"
+            v-else-if="post.thumbUp == false"
+          >
             <p class="postLikeLength hoverable">{{ post.likeIds.length }}</p>
-            <vs-tooltip>
-              <i
-                @click="likePost()"
-                :class="post.likeIds.length"
-                class="mdi mdi-star-outline fs-2 text-warning text-shadow hoverableThumb rounded"
-              ></i>
-            </vs-tooltip>
+
+            <i
+              @click="likePost()"
+              :class="post.likeIds.length"
+              class="mdi mdi-star-outline fs-2 text-warning text-shadow hoverableThumb rounded"
+            ></i>
           </div>
-          <div>
-          </div>
+          <div></div>
           <!-- <div v-else>
             <p class="postLikeLength">{{ post.likeIds.length }}</p>
             <i
@@ -83,7 +82,7 @@
             position="left"
             color="primary"
           >
-            <h6 class="timeText hoverable">    {{testTime}}</h6>
+            <h6 class="timeText hoverable">{{ testTime }}</h6>
           </vs-tooltip>
         </div>
       </div>
@@ -108,29 +107,27 @@ export default {
     post: { type: Post, required: true },
   },
   setup(props) {
-function test5(){
-  
-   props.post.likes.forEach((m) => {
-      console.log(m.name);
-      AppState.likeNamesList = m.name
-    });
-
-}
-test5()
+    function test5() {
+      props.post.likes.forEach((m) => {
+        console.log(m.name);
+        AppState.likeNamesList = m.name;
+      });
+    }
+    test5();
     let time = format(Date.now());
     let testTime = format(props.post.createdAt);
     return {
-     
       time,
       testTime,
       account: computed(() => AppState.account),
       user: computed(() => AppState.user),
       myLike: computed(() => AppState.myLike),
-LikeListName: computed(() => AppState.likeNamesList),
+      LikeListName: computed(() => AppState.likeNamesList),
       async likePost() {
         try {
           await postService.likePost(props.post.id);
           //  postService.toggleLike(props.post.id);
+          Pop.toast('Liked','success','top-end')
         } catch (error) {
           Pop.error(error, '[likePost]');
         }
@@ -178,8 +175,8 @@ LikeListName: computed(() => AppState.likeNamesList),
   transition: all 0.3s ease;
 }
 .deleteImg {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   object-fit: cover;
   transition: all 1s ease;
 }
@@ -210,17 +207,20 @@ LikeListName: computed(() => AppState.likeNamesList),
   letter-spacing: 0.05rem;
 }
 .customBg {
-  background-color: #a4cddfb7;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: url(https://www.zastavki.com/pictures/originals/2015/Backgrounds_Blue_texture_background_104976_.jpg);
 }
 p {
   font-weight: 700;
 }
 
 .accountImages {
-  border: 4px double rgb(145, 155, 212);
+  border: 4px double rgb(14, 23, 75);
 }
 
-.timeStamp{
+.timeStamp {
   font-weight: bold;
 }
 .timeText {
@@ -246,21 +246,18 @@ p {
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
-@media only screen and  (max-width: 650px){
-.deleteImg{
-  width: 30px;
-  height: 30px;
-  filter: hue-rotate(180deg);
-}
-.forcedImg {
-  height: 150px;
-  width: auto;
-  object-fit: cover;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-}
-
-
+@media only screen and (max-width: 650px) {
+  .deleteImg {
+    width: 30px;
+    height: 30px;
+    filter: hue-rotate(180deg);
+  }
+  .forcedImg {
+    height: 150px;
+    width: auto;
+    object-fit: cover;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
 }
 </style>

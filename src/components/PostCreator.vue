@@ -21,7 +21,7 @@
 
   <div class="d-flex align-items-center mt-4">
     <router-link :to="{ name: 'Profile', params: { id: creator.id } }">
-      <b class="text-dark creatorName">By {{ creator.name }}</b>
+     By <b class="text-dark creatorName"> {{ creator.name }}</b>
     </router-link>
   </div>
 </template>
@@ -64,8 +64,9 @@ export default {
 .forcedImg:hover {
   filter: brightness(110%);
   box-shadow: 0 4px 8px 0 rgba(6, 125, 223, 0.2),
-    0 6px 20px 0 rgba(9, 148, 212, 0.19);
+    0 6px 20px 0 rgba(108, 188, 225, 0.378);
   transition: all 0.4s ease;
+  transform: scale(1.01);
 }
 
 h6 {
@@ -76,6 +77,7 @@ h6 {
 .creatorName {
   font-weight: bold;
   font-style: oblique;
+
 }
 .graduated {
   position: absolute;

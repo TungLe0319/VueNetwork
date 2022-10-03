@@ -62,6 +62,7 @@ export default {
   box-shadow: 0 4px 8px 0 rgba(6, 125, 223, 0.2),
     0 6px 20px 0 rgba(9, 148, 212, 0.19);
   transition: all 0.4s ease;
+  transform: scale(1.01);
 }
 
 h6 {

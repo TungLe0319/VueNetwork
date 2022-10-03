@@ -4,6 +4,9 @@
     <div class="col-md-12">
       <SearchForm />
     </div>
+    <div class="col-md-12">
+      <SearchProfiles />
+    </div>
    
         <!-- <ProfileCards  /> -->
             <div  class="text-center col-md-1 m-2"  v-for="p in profiles">
@@ -20,7 +23,7 @@
     <div class="border border-bottom border-3 border-dark rounded my-2">
       
     </div>
-        <div class="col-md-6" v-for="p in posts" :key="p">
+        <div class="col-md-12" v-for="p in posts" :key="p">
         <PostCard
           :post="p"
           :creator="p.creator"
@@ -48,6 +51,7 @@ import NaiveTest from '../components/NaiveTest.vue';
 import ProfileCards1 from '../components/ProfileCards.vue';
 import CreatorIcons from "../components/creatorIcons.vue";
 import { useRouter } from "vue-router";
+import SearchProfiles from "../components/SearchProfiles.vue";
 
 
 export default {
@@ -107,7 +111,8 @@ export default {
     ProfileDetail,
     NaiveTest,
     ProfileCards1,
-    CreatorIcons
+    CreatorIcons,
+    SearchProfiles
 },
 };
 </script>
