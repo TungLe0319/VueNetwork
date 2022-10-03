@@ -15,7 +15,6 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="inputBox mt-2">
-                
                   <input
                     type="text"
                     v-model="editable.name"
@@ -25,7 +24,6 @@
                   <span>ProfileName</span>
                 </div>
                 <div class="inputBox my-4">
-                 
                   <input
                     type="text"
                     v-model="editable.email"
@@ -36,7 +34,6 @@
                 </div>
 
                 <div class="inputBox mt-2">
-                
                   <input
                     type="url"
                     v-model="editable.picture"
@@ -45,7 +42,6 @@
                   />
                   <span>profile picture</span>
                 </div>
-
               </div>
 
               <div class="col-md-6 justify-content-center d-flex">
@@ -57,7 +53,6 @@
               </div>
 
               <div class="col-md-6">
-                
                 <div class="form-group d-flex align-items-center">
                   <label class="form-check-label mt-2 me-3" for="graduated">
                     <vs-tooltip
@@ -79,7 +74,6 @@
                   </div>
                 </div>
                 <div class="inputBox mt-2">
-               
                   <input
                     type="text"
                     v-model="editable.class"
@@ -90,7 +84,6 @@
                   <span>Class</span>
                 </div>
                 <div class="inputBox mt-2">
-                 
                   <input
                     type="text"
                     v-model="editable.github"
@@ -98,21 +91,18 @@
                     class=" "
                     min="0"
                   />
-                        <span>github</span>
+                  <span>github</span>
                 </div>
-                <div class=" inputBox mt-2">
-               
+                <div class="inputBox mt-2">
                   <input
                     type="text"
                     v-model="editable.linkedin"
-                   
-                    class=" mt-2"
+                    class="mt-2"
                     min="0"
                   />
-                      <span>linkedin</span>
+                  <span>linkedin</span>
                 </div>
                 <div class="inputBox mt-2">
-                  
                   <input
                     type="text"
                     v-model="editable.resume"
@@ -134,16 +124,14 @@
                   <input type="url" v-model="editable.coverImg" class=" " />
                   <span>CoverImg</span>
                 </div>
-              
               </div>
             </div>
 
             <div class="inputBox2 mt-2">
-             
               <textarea
                 v-model="editable.bio"
                 placeholder="bio."
-                class=" mt-2"
+                class="mt-2"
                 rows="4"
               ></textarea>
               <span>Bio</span>
@@ -185,6 +173,7 @@ export default {
       async handleSubmit() {
         try {
           await accountService.editProfile(editable.value);
+          Pop.success('Account Edit Approved');
         } catch (error) {
           Pop.error(error, ['']);
         }
@@ -225,14 +214,13 @@ export default {
   filter: brightness(110%);
 }
 
-.checkBoxInput input{
-    color: #27132a;
- background-color: #27132a;
+.checkBoxInput input {
+  color: #27132a;
+  background-color: #27132a;
   padding: 0 10px;
   font-size: 0.65em;
 
-border: 1px solid #92c5f5 ;
-
+  border: 1px solid #92c5f5;
 
   letter-spacing: 0.2em;
   transition: all 1s ease;
@@ -245,11 +233,10 @@ border: 1px solid #92c5f5 ;
 .inputBox2 {
   position: relative;
   width: auto;
-  
 }
 .inputBox2 textarea {
   width: 100%;
- 
+
   text-align: right;
   padding: 10px;
   border: 1px solid #92c5f5;
@@ -260,7 +247,7 @@ border: 1px solid #92c5f5 ;
   font-size: 1em;
   background-color: transparent;
   transition: all 1.5s ease;
-  box-shadow:  0.25px 0.25px 10px rgba(243, 236, 236, 0.308);
+  box-shadow: 0.25px 0.25px 10px rgba(243, 236, 236, 0.308);
 }
 .inputBox2 span {
   position: absolute;
@@ -279,9 +266,9 @@ border: 1px solid #92c5f5 ;
   transform: translateX(10px) translateY(-70px);
   padding: 0 10px;
   font-size: 1em;
-border-radius: 4px;
+  border-radius: 4px;
   font-weight: bold;
-   background: #92c5f5;
+  background: #92c5f5;
   border-left: 1px solid #92c5f5;
   border-right: 1px solid #92c5f5;
   letter-spacing: 0.2em;
@@ -300,7 +287,7 @@ border-radius: 4px;
   font-size: 1em;
   background-color: transparent;
   transition: all 1.5s ease;
-  box-shadow:  0.25px 0.25px 10px rgba(243, 236, 236, 0.308);
+  box-shadow: 0.25px 0.25px 10px rgba(243, 236, 236, 0.308);
 }
 .inputBox span {
   position: absolute;
@@ -319,9 +306,9 @@ border-radius: 4px;
   transform: translateX(10px) translateY(-7px);
   padding: 0 10px;
   font-size: 0.65em;
-border-radius: 4px;
+  border-radius: 4px;
   font-weight: bold;
-   background: #92c5f5;
+  background: #92c5f5;
   border-left: 1px solid #92c5f5;
   border-right: 1px solid #92c5f5;
   letter-spacing: 0.2em;
@@ -338,6 +325,6 @@ border-radius: 4px;
   background-image: url(https://www.pixelstalk.net/wp-content/uploads/images6/21-9-HD-Wallpaper-Free-download.jpg);
   background-size: cover;
   background-position: center;
-   box-shadow:  1px 1px 10px rgba(243, 236, 236, 0.308);
+  box-shadow: 1px 1px 10px rgba(243, 236, 236, 0.308);
 }
 </style>

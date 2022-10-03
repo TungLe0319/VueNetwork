@@ -4,7 +4,7 @@
       <img
         :src="ad.tall"
         :alt="ad.title"
-        class="img-fluid elevation-4 w-75 mt-2 rounded box-shadow filter1"
+        class="img-fluid elevation-4 mt-2 rounded box-shadow filter1"
       />
     </a>
   </div>

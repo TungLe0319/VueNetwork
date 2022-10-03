@@ -8,7 +8,7 @@
         @error="setAltImg"
       />
     </router-link>
-    <span class="graduated">
+    <span class="graduated" v-if="creator.graduated">
       <img
         src="https://cdn-icons-png.flaticon.com/512/732/732475.png"
         alt=""
@@ -23,15 +23,6 @@
     <router-link :to="{ name: 'Profile', params: { id: creator.id } }">
       <b class="text-dark creatorName">By {{ creator.name }}</b>
     </router-link>
-    <span v-if="creator.graduated">
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/732/732475.png"
-        alt=""
-        width="30 "
-        height="30"
-        class="text-shadow"
-      />
-    </span>
   </div>
 </template>
 

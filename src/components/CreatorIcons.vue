@@ -8,7 +8,7 @@
         @error="setAltImg"
       />
     </router-link>
-    <span v-if="profile.graduated" class="">
+    <div v-if="profile.graduated" class="">
       <img
         src="https://cdn-icons-png.flaticon.com/512/732/732475.png"
         alt=""
@@ -16,7 +16,7 @@
         height="30"
         class="text-shadow"
       />
-    </span>
+    </div>
   </div>
 </template>
 
