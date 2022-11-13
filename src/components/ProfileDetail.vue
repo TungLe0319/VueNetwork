@@ -165,6 +165,7 @@ export default {
   object-fit: cover;
 }
 
+
 .schoolIcon {
   position: absolute;
   top: -0.75rem;
@@ -220,3 +221,5 @@ transition: all 0.3s ease;
   left: 0;
 }
 </style>
+
+
