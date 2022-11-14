@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="navbar navbar-expand-lg bg-warning menu-bar px-3 elevation-4 justify-content-between"
+    class="navbar navbar-expand-lg bg-warning menu-bar px-3 pb-0 elevation-4 justify-content-between"
   >
     <div class="d-flex">
       <vs-tooltip text="Home " position="right" color="warning">

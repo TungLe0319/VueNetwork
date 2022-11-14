@@ -8,12 +8,13 @@
   </button>
 
   <div class="my-2 my-lg-0" v-else>
-    <div v-if="account.picture" class="d-flex my-4 position-relative">
+    <div v-if="account.picture" class="d-flex my-4 position-relative justify-content-center">
       <img
         :src="account.picture"
         alt="account photo"
         height="120"
-        class="rounded-circle loginImg"
+        width="120"
+        class="rounded-circle  loginImg"
       />
       <span class="graduated" v-if="account.graduated">
         <img
@@ -51,9 +52,9 @@
   <!-- --------------------------------- -->
 
   <div class="mt-2 d-flex flex-column">
-    <div>
-      <span>
-        <h2>{{ account.name }}</h2>
+    <div class="text-wrap">
+      <span class="text-wrap">
+        <h3 class="text-wrap">{{ account.name.split("@")[0] }}</h3>
       </span>
     </div>
     <!-- --------------------------------------------------------- -->
@@ -131,11 +132,13 @@ div {
 .loginImg {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   transition: all 0.5s ease;
+  object-fit: cover;
+  object-position: center;
 }
 .loginImg:hover {
-  transform: scale(1.02);
+  transform: scale(1.01);
   transition: all 0.5s ease;
-  filter: brightness(120%);
+  filter: brightness(110%);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
     0 6px 20px 0 rgba(142, 238, 228, 0.756);
 }
